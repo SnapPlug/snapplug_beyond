@@ -35,7 +35,7 @@ export default function Home() {
           <ContactButton text="시작하기" />
 
           {/* 통계 지표 섹션 */}
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
                 <span className="text-2xl sm:text-3xl">
@@ -87,11 +87,11 @@ export default function Home() {
           overlayOpacity={0.5}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-1 items-center min-h-screen py-20">
               {/* Left Content */}
               <div className="text-left">
                 <h2 
-                  className="text-3xl sm:text-4xl lg:text-5xl font-black mb-8 leading-tight" 
+                  className="text-4xl lg:text-[36px] font-black mb-8 leading-tight" 
                   style={{ 
                     fontFamily: 'var(--font-pirulen), sans-serif',
                     color: '#f0f0fa'
@@ -99,7 +99,7 @@ export default function Home() {
                 >
                   비즈니스, 그 이상을 만드는 여정
                 </h2>
-                <div className="space-y-6 text-lg sm:text-xl text-[#f0f0fa] leading-relaxed">
+                <div className="space-y-6 text-base lg:text-[16px] text-[#f0f0fa] leading-relaxed">
                   <p>
                     모든 위대한 사업은, 막연한 생각 하나에서 시작됩니다.
                   </p>
@@ -138,49 +138,96 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 
-                className="text-3xl sm:text-4xl lg:text-5xl font-black mb-8" 
+                className="text-4xl lg:text-[36px] font-black mb-8" 
                 style={{ 
                   fontFamily: 'var(--font-pirulen), sans-serif',
                   color: '#f0f0fa'
                 }}
               >
-                OUR SERVICES
+                비즈니스가 스스로 성장하는 세상을 만듭니다.
               </h2>
-              <p className="text-lg sm:text-xl text-[#f0f0fa]/80 max-w-3xl mx-auto mb-16">
-                아이디어부터 완성까지, 단계별 맞춤 솔루션을 제공합니다
+              <p className="text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto mb-16">
+                고객이 믿고 찾는 웹사이트, 매출이 자동으로 발생하는 웹서비스, 대표님 대신 일하는 자동화 시스템.
               </p>
               
               {/* 서비스 카드 그리드 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-[#121212]/60 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-8 text-left">
-                  <div className="text-2xl font-bold text-[#f0f0fa] mb-4">랜딩페이지</div>
-                  <p className="text-[#f0f0fa]/70 text-sm mb-6">
-                    첫 단계부터 완벽한 시작. 아이디어를 소개하고 고객을 유치하는 전문적인 랜딩페이지를 제작합니다.
-                  </p>
-                  <div className="text-xs text-[#f0f0fa]/50">
-                    • 반응형 디자인 • SEO 최적화 • 빠른 로딩
+              <div 
+                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                style={{
+                  backgroundImage: 'url(https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              >
+                  <div className="absolute inset-0 bg-[#121212]/70"></div>
+                  <div className="relative z-10">
+                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">신뢰를 만드는 첫인상</div>
+                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                      첫인상은 3초 안에 결정됩니다.<br />
+                      SnapPlug는 디자인보다 느낌을 설계합니다.<br />
+                      보는 순간 “이 회사, 믿을 수 있겠다”는 <br />
+                      인상을 남기고, 브랜드의 진정성과 가치를 <br />
+                      명확히 전달합니다.<br />
+                      고객의 마음이 머무는, <br />
+                      신뢰의 시작점을 만듭니다
+                    </p>
                   </div>
+       
                 </div>
                 
-                <div className="bg-[#121212]/60 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-8 text-left">
-                  <div className="text-2xl font-bold text-[#f0f0fa] mb-4">웹서비스</div>
-                  <p className="text-[#f0f0fa]/70 text-sm mb-6">
-                    본격적인 비즈니스 운영을 위한 완전한 웹서비스. 사용자 관리부터 결제까지 모든 기능을 구현합니다.
-                  </p>
-                  <div className="text-xs text-[#f0f0fa]/50">
-                    • 사용자 인증 • 데이터베이스 • API 연동
+                <div 
+                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                  style={{
+                    backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-[#121212]/70"></div>
+                  <div className="relative z-10">
+                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">매출로 이어지는 경험</div>
+                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                      고객이 찾아왔는데 구매로 이어지지 않는다면,<br />
+                      문제는 디자인이 아니라 ‘흐름’에 있습니다.<br />
+                      SnapPlug는 방문 → 참여 → 구매 → 재방문의<br />
+                      자연스러운 고객 여정을 설계해,<br />
+                      매출이 스스로 움직이는 구조를 만듭니다.<br />
+                      클릭이 매출로, 고객이 팬으로 변하는 순간을 <br />
+                      설계합니다.
+                    </p>
                   </div>
+             
                 </div>
                 
-                <div className="bg-[#121212]/60 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-8 text-left">
-                  <div className="text-2xl font-bold text-[#f0f0fa] mb-4">자동화 솔루션</div>
-                  <p className="text-[#f0f0fa]/70 text-sm mb-6">
-                    반복 업무를 자동화하여 효율성을 극대화. 비즈니스 성장에 집중할 수 있도록 뒷받침합니다.
-                  </p>
-                  <div className="text-xs text-[#f0f0fa]/50">
-                    • 업무 자동화 • 통합 관리 • 실시간 모니터링
+                <div 
+                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                  style={{
+                    backgroundImage: 'url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-[#121212]/70"></div>
+                  <div className="relative z-10">
+                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">시간을 버는 솔루션</div>
+                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                      반복되는 관리와 업무에 시간을 잃고 계신가요?<br />
+                      SnapPlug는 예약, 결제, 마케팅, 보고까지<br />
+                      대표님이 매일 하는 루틴을 자동화합니다.<br />
+                      일은 저절로 돌아가고,<br />
+                      대표님은 ‘일하는 시간’ 대신 <br/>
+                      ‘성장하는 시간’을 갖게 됩니다.<br />
+                      기술이 아닌 ‘시간 회복’을 설계합니다.
+                    </p>
                   </div>
+                
                 </div>
+              </div>
+              
+              {/* CTA Button */}
+              <div className="mt-12">
+                <ContactButton text="자세히 보기" />
               </div>
             </div>
           </div>
@@ -191,7 +238,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 
-                className="text-3xl sm:text-4xl lg:text-5xl font-black mb-8" 
+                className="text-4xl lg:text-[36px] font-black mb-8" 
                 style={{ 
                   fontFamily: 'var(--font-pirulen), sans-serif',
                   color: '#f0f0fa'
@@ -199,7 +246,7 @@ export default function Home() {
               >
                 PORTFOLIO
               </h2>
-              <p className="text-lg sm:text-xl text-[#f0f0fa]/70 max-w-3xl mx-auto">
+              <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
                 다양한 분야에서 검증된 자동화 솔루션들
               </p>
             </div>
@@ -367,7 +414,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 
-                className="text-3xl sm:text-4xl lg:text-5xl font-black mb-8" 
+                className="text-4xl lg:text-[36px] font-black mb-8" 
                 style={{ 
                   fontFamily: 'var(--font-pirulen), sans-serif',
                   color: '#f0f0fa'
@@ -375,7 +422,7 @@ export default function Home() {
               >
                 TESTIMONIALS
               </h2>
-              <p className="text-lg sm:text-xl text-[#f0f0fa]/70 max-w-3xl mx-auto">
+              <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
                 성공한 고객들의 진짜 이야기
               </p>
             </div>
@@ -500,11 +547,11 @@ export default function Home() {
 
             {/* CTA Section */}
             <div className="text-center mt-16">
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-8 max-w-4xl mx-auto">
-                <h3 className="text-2xl font-bold text-[#f0f0fa] mb-4">
+              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-8 max-w-full mx-auto">
+                <h3 className="text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-4">
                   당신도 성공 스토리의 주인공이 되어보세요
                 </h3>
-                <p className="text-[#f0f0fa]/70 mb-6">
+                <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 mb-6">
                   아이디어만 있으면 충분합니다. 나머지는 SnapPlug가 해드릴게요.
                 </p>
                 <ContactButton text="무료 상담 받기" />
