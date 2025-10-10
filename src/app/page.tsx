@@ -23,7 +23,7 @@ export default function Home() {
           overlayOpacity={0.4}
         >
           <h1 
-            className="text-4xl sm:text-6xl lg:text-7xl font-black mb-6" 
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6" 
             style={{ 
             
               color: '#F0F0FA'
@@ -37,43 +37,43 @@ export default function Home() {
           <ContactButton text="시작하기" />
 
           {/* 통계 지표 섹션 */}
-          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
+          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-3xl mx-auto px-4">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
+                <span className="text-lg sm:text-2xl lg:text-3xl">
                   <AnimatedCounter end={60} duration={2000} />
                 </span>
-                <span className="text-lg sm:text-xl ml-1">분 이상</span>
+                <span className="text-sm sm:text-lg lg:text-xl ml-1">분 이상</span>
               </div>
               <div className="text-xs sm:text-sm text-[#f0f0fa]/70">초기 상담 시간</div>
               <div className="text-xs text-[#f0f0fa]/50">충분한 시간으로 정확한 파악</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
+                <span className="text-lg sm:text-2xl lg:text-3xl">
                   <AnimatedCounter end={99} duration={2200} />
                 </span>
-                <span className="text-lg sm:text-xl ml-1">%</span>
+                <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
               </div>
               <div className="text-xs sm:text-sm text-[#f0f0fa]/70">프로젝트 목표 달성률</div>
               <div className="text-xs text-[#f0f0fa]/50">약속한 결과를 확실히 전달</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
+                <span className="text-lg sm:text-2xl lg:text-3xl">
                   <AnimatedCounter end={87} duration={2500} />
                 </span>
-                <span className="text-lg sm:text-xl ml-1">%</span>
+                <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
               </div>
               <div className="text-xs sm:text-sm text-[#f0f0fa]/70">재계약/소개율</div>
               <div className="text-xs text-[#f0f0fa]/50">만족한 고객들의 지속적 선택</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
+                <span className="text-lg sm:text-2xl lg:text-3xl">
                   <AnimatedCounter end={2.0} duration={2000} />
                 </span>
-                <span className="text-lg sm:text-xl ml-1">시간</span>
+                <span className="text-sm sm:text-lg lg:text-xl ml-1">시간</span>
               </div>
               <div className="text-xs sm:text-sm text-[#f0f0fa]/70">평균 응답 시간</div>
               <div className="text-xs text-[#f0f0fa]/50">빠른 소통으로 안심</div>
@@ -88,20 +88,20 @@ export default function Home() {
           overlay={true}
           overlayOpacity={0.5}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-1 items-center min-h-screen py-20">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-1 items-center min-h-screen py-12 sm:py-16 lg:py-20">
               {/* Left Content */}
               <div className="text-left">
                 <h2 
-                  className="text-4xl lg:text-[36px] font-black mb-8 leading-tight" 
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-6 sm:mb-8 leading-tight" 
                   style={{ 
                     fontFamily: 'var(--font-pirulen), sans-serif',
                     color: '#f0f0fa'
                   }}
                 >
-                  비즈니스, 그 이상을 만드는 여정
+                  비즈니스,<br className="sm:hidden" /> 그 이상을 만드는 여정
                 </h2>
-                <div className="space-y-6 text-base lg:text-[16px] text-[#f0f0fa] leading-relaxed">
+                <div className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-[16px] text-[#f0f0fa] leading-relaxed">
                   <p>
                     모든 위대한 사업은, 막연한 생각 하나에서 시작됩니다.
                   </p>
@@ -118,7 +118,7 @@ export default function Home() {
                     이제 대표님의 아이디어는 하나의 서비스로, 하나의 성장으로, 하나의 이야기가 됩니다.
                   </p>
                 </div>
-                <div className="mt-12">
+                <div className="mt-8 sm:mt-12">
                   <ContactButton text="자세히 알아보기" />
                 </div>
               </div>
@@ -132,30 +132,40 @@ export default function Home() {
         </FullScreenSection>
 
         {/* Service Section */}
-        <FullScreenSection 
-          backgroundVideo="/service.mp4"
-          overlay={true}
-          overlayOpacity={0.4}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+          {/* 배경 비디오 */}
+          <video 
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/service.mp4" type="video/mp4" />
+          </video>
+          
+          {/* 오버레이 */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
             <div className="text-center">
               <h2 
-                className="text-4xl lg:text-[36px] font-black mb-8" 
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-6 sm:mb-8" 
                 style={{ 
                   fontFamily: 'var(--font-pirulen), sans-serif',
                   color: '#f0f0fa'
                 }}
               >
-                비즈니스가 스스로 성장하는 세상을 만듭니다.
+                비즈니스가 스스로 성장하는<br className="sm:hidden" /> 세상을 만듭니다.
               </h2>
-              <p className="text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto mb-16">
+              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto mb-12 sm:mb-16">
                 신뢰가 매출로 이어지고, 시간이 성장으로 유기적으로 연결되는 하나의 완벽한 비즈니스 솔루션을 제공합니다.
               </p>
               
               {/* 서비스 카드 그리드 */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div 
-                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
                   style={{
                   backgroundImage: 'url(https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80)',
                     backgroundSize: 'cover',
@@ -164,8 +174,8 @@ export default function Home() {
                 >
                   <div className="absolute inset-0 bg-[#121212]/70"></div>
                   <div className="relative z-10">
-                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">신뢰를 만드는 첫인상</div>
-                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">신뢰를 만드는 첫인상</div>
+                    <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
                       첫인상은 3초 안에 결정됩니다.<br />
                       SnapPlug는 디자인보다 느낌을 설계합니다.<br />
                       보는 순간 “이 회사, 믿을 수 있겠다”는 <br />
@@ -179,7 +189,7 @@ export default function Home() {
                 </div>
                 
                 <div 
-                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
                   style={{
                     backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80)',
                     backgroundSize: 'cover',
@@ -188,8 +198,8 @@ export default function Home() {
                 >
                   <div className="absolute inset-0 bg-[#121212]/70"></div>
                   <div className="relative z-10">
-                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">매출로 이어지는 경험</div>
-                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">매출로 이어지는 경험</div>
+                    <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
                       고객이 찾아왔는데 구매로 이어지지 않는다면,<br />
                       문제는 디자인이 아니라 ‘흐름’에 있습니다.<br />
                       SnapPlug는 방문 → 참여 → 구매 → 재방문의<br />
@@ -203,7 +213,7 @@ export default function Home() {
                 </div>
                 
                 <div 
-                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
+                  className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
                   style={{
                     backgroundImage: 'url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80)',
                     backgroundSize: 'cover',
@@ -212,8 +222,8 @@ export default function Home() {
                 >
                   <div className="absolute inset-0 bg-[#121212]/70"></div>
                   <div className="relative z-10">
-                    <div className="text-2xl font-bold text-[#f0f0fa] mb-8">시간을 버는 솔루션</div>
-                    <p className="text-[#f0f0fa]/80 text-[16px] mb-4 leading-relaxed">
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">시간을 버는 솔루션</div>
+                    <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
                       반복되는 관리와 업무에 시간을 잃고 계신가요?<br />
                       SnapPlug는 예약, 결제, 마케팅, 보고까지<br />
                       대표님이 매일 하는 루틴을 자동화합니다.<br />
@@ -228,15 +238,15 @@ export default function Home() {
               </div>
               
               {/* CTA Button */}
-              <div className="mt-12">
+              <div className="mt-8 sm:mt-12">
                 <ContactButton text="자세히 보기" />
               </div>
             </div>
           </div>
-        </FullScreenSection>
+        </section>
 
         {/* Portfolio Section */}
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
           {/* 배경 비디오 */}
           <video 
             className="absolute inset-0 w-full h-full object-cover"
@@ -251,10 +261,10 @@ export default function Home() {
           {/* 오버레이 */}
           <div className="absolute inset-0 bg-black/60"></div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-12 relative z-10">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
               <h2 
-                className="text-4xl lg:text-[36px] font-black mb-8" 
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-4 sm:mb-6 lg:mb-8" 
                 style={{ 
                   
                   color: '#f0f0fa'
@@ -262,7 +272,7 @@ export default function Home() {
               >
                 SHOWCASES
               </h2>
-              <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
                 아이디어가 현실이 되고, 비즈니스가 스스로 성장한 스토리를 살펴보세요.
               </p>
             </div>
@@ -285,7 +295,7 @@ export default function Home() {
           {/* 오버레이 */}
           <div className="absolute inset-0 bg-black/70"></div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
             <div className="text-center mb-16">
               <h2 
                 className="text-4xl lg:text-[36px] font-black mb-8" 
@@ -324,7 +334,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/60"></div>
               
               {/* 콘텐츠 */}
-              <div className="relative z-10 text-center mt-16 mb-16 p-8 max-w-full mx-auto">
+              <div className="relative z-10 text-center mt-16 mb-16 px-6 sm:px-10 lg:px-12 py-8 max-w-full mx-auto">
                 <h3 className="text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-4">
                   지금, 성공 스토리의 주인공이 되어보세요
                 </h3>
