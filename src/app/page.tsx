@@ -2,6 +2,8 @@ import SpaceXHeader from "@/components/SpaceXHeader";
 import FullScreenSection from "@/components/FullScreenSection";
 import ContactButton from "@/components/ContactButton";
 import AnimatedCounter from "../components/AnimatedCounter";
+import PortfolioCarousel from "@/components/PortfolioCarousel";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 /**
  * 홈 페이지 컴포넌트
@@ -147,19 +149,19 @@ export default function Home() {
                 비즈니스가 스스로 성장하는 세상을 만듭니다.
               </h2>
               <p className="text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto mb-16">
-                고객이 믿고 찾는 웹사이트, 매출이 자동으로 발생하는 웹서비스, 대표님 대신 일하는 자동화 시스템.
+                신뢰가 매출로 이어지고, 시간이 성장으로 유기적으로 연결되는 하나의 완벽한 비즈니스 솔루션을 제공합니다.
               </p>
               
               {/* 서비스 카드 그리드 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div 
+                <div 
                 className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-8 text-left relative overflow-hidden min-h-[400px]"
-                style={{
+                  style={{
                   backgroundImage: 'url(https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
                   <div className="absolute inset-0 bg-[#121212]/70"></div>
                   <div className="relative z-10">
                     <div className="text-2xl font-bold text-[#f0f0fa] mb-8">신뢰를 만드는 첫인상</div>
@@ -240,172 +242,19 @@ export default function Home() {
               <h2 
                 className="text-4xl lg:text-[36px] font-black mb-8" 
                 style={{ 
-                  fontFamily: 'var(--font-pirulen), sans-serif',
+                  
                   color: '#f0f0fa'
                 }}
               >
-                PORTFOLIO
+                SHOWCASES
               </h2>
               <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
-                다양한 분야에서 검증된 자동화 솔루션들
+                아이디어가 현실이 되고, 비즈니스가 스스로 성장한 스토리를 살펴보세요.
               </p>
             </div>
 
-            {/* Portfolio Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              
-              {/* 1. 센터 운영 관리 서비스 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                {/* Mock UI Header */}
-                <div className="bg-gray-100 px-4 py-2 flex justify-between items-center text-xs">
-                  <span className="text-gray-600">AI 자동화</span>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-500">5:36</span>
-                    <span className="text-gray-500">5G 100</span>
-                  </div>
-                </div>
-                
-                {/* Mock App Interface */}
-                <div className="p-4 bg-gray-50">
-                  <div className="bg-white rounded-lg p-3 mb-3 shadow-sm">
-                    <div className="text-sm font-medium text-gray-800">SnapClub - 가장 간단하고 확...</div>
-                    <div className="text-xs text-gray-500">www.snapclub.app</div>
-                    <div className="mt-2 text-sm text-gray-700">스냅클럽</div>
-                    <div className="text-xs text-gray-600">수업 예약</div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="bg-white rounded p-2">
-                      <div className="text-gray-600">Dashboard</div>
-                      <div className="text-gray-600">수업시간표</div>
-                      <div className="text-gray-600">회원정보</div>
-                    </div>
-                    <div className="bg-white rounded p-2">
-                      <div className="text-gray-600">강사정보</div>
-                      <div className="text-gray-600">센터관리</div>
-                      <div className="text-gray-600">Settings</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Portfolio Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">센터 운영 관리 서비스</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    카카오톡 기반 자동화 시스템으로 예약·회원·스케줄 관리까지. 별도의 앱 없이, 누구나 바로 사용할 수 있는 운영 혁신 솔루션.
-                  </p>
-                  <button className="w-full bg-gray-900 text-white py-2 px-4 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
-                    자세히 보기 →
-                  </button>
-                  <div className="text-xs text-gray-400 mt-2">김원장</div>
-                </div>
-              </div>
-
-              {/* 2. 스케줄/대시보드 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                {/* Mock UI Header */}
-                <div className="bg-gray-100 px-4 py-2">
-                  <span className="text-lg font-medium text-gray-800">2025년 10월</span>
-                </div>
-                
-                {/* Mock Schedule Interface */}
-                <div className="p-4 bg-gray-50">
-                  <div className="space-y-2">
-                    <div className="bg-orange-100 border-l-4 border-orange-500 p-2 rounded text-xs">
-                      <div className="font-medium">김강사 (0/1)</div>
-                      <div className="text-gray-600">오전 10시</div>
-                    </div>
-                    <div className="bg-blue-100 border-l-4 border-blue-500 p-2 rounded text-xs">
-                      <div className="font-medium">박강사 (1/3)</div>
-                      <div className="text-gray-600">오전 10시 · 정회원</div>
-                    </div>
-                    <div className="bg-purple-100 border-l-4 border-purple-500 p-2 rounded text-xs">
-                      <div className="font-medium">박강사 (0/3)</div>
-                      <div className="text-gray-600">오후 12시</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Portfolio Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">운영 효율성 분석</h3>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-red-600">-70%</div>
-                      <div className="text-xs text-gray-600">관리시간 절감</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-green-600">+2.3배</div>
-                      <div className="text-xs text-gray-600">운영 효율 향상</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-blue-600">0건</div>
-                      <div className="text-xs text-gray-600">예약 누락 및 오류</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-purple-600">98%</div>
-                      <div className="text-xs text-gray-600">강사 및 회원 만족도</div>
-                    </div>
-                  </div>
-                  <div className="flex justify-center space-x-1 mb-4">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                    <div className="w-2 h-2 bg-gray-200 rounded-full"></div>
-                    <div className="w-2 h-2 bg-gray-200 rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. 병원 예약 관리 솔루션 */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-lg">
-                {/* Mock UI Header */}
-                <div className="bg-gray-100 px-4 py-2 flex justify-between items-center text-xs">
-                  <span className="text-gray-600">AI 자동화</span>
-                </div>
-                
-                {/* Mock Hospital Interface */}
-                <div className="p-4 bg-gray-50">
-                  <div className="flex justify-between items-center mb-3">
-                    <h4 className="text-sm font-medium text-gray-800">모든 할당된 검사</h4>
-                    <button className="bg-green-500 text-white px-3 py-1 rounded text-xs">+ 검사 만들기</button>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between bg-white p-2 rounded text-xs">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                        <span className="text-gray-600">In progress</span>
-                      </div>
-                      <span className="text-gray-800">혈압 측정</span>
-                    </div>
-                    <div className="flex items-center justify-between bg-white p-2 rounded text-xs">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
-                        <span className="text-gray-600">Not started</span>
-                      </div>
-                      <span className="text-gray-800">체온 측정</span>
-                    </div>
-                    <div className="flex items-center justify-between bg-white p-2 rounded text-xs">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                        <span className="text-gray-600">Completed</span>
-                      </div>
-                      <span className="text-gray-800">신체 검사</span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Portfolio Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">병원 예약 관리 솔루션</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    병원 예약부터 예진, 문진까지 완전 자동화로 의료진의 시간을 되찾았습니다.
-                  </p>
-                  <button className="w-full bg-gray-900 text-white py-2 px-4 rounded text-sm font-medium hover:bg-gray-800 transition-colors">
-                    자세히 보기 →
-                  </button>
-                </div>
-              </div>
-            </div>
+            {/* Portfolio Carousel */}
+            <PortfolioCarousel />
           </div>
         </section>
 
@@ -416,134 +265,19 @@ export default function Home() {
               <h2 
                 className="text-4xl lg:text-[36px] font-black mb-8" 
                 style={{ 
-                  fontFamily: 'var(--font-pirulen), sans-serif',
                   color: '#f0f0fa'
                 }}
               >
-                TESTIMONIALS
+                결과로 말합니다.
               </h2>
               <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
-                성공한 고객들의 진짜 이야기
+              Snapplug의 시스템은 단순한 개발이 아니라, 대표님들의 시간, 매출, 그리고 성장의 변화를 만들어냅니다.
+              <br />실제 고객들이 경험한 '비즈니스가 스스로 움직이는 순간'을 들어보세요.
               </p>
             </div>
 
-            {/* Testimonials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
-              {/* Testimonial 1 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">김</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">김원장</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">필라테스 센터 운영</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;예약 관리가 이렇게 쉬울 줄 몰랐어요. 카카오톡으로 모든 게 자동화되니까 회원들도 편하고 저도 편해요. 매출이 2배로 늘었습니다!&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-
-              {/* Testimonial 2 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">박</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">박대표</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">헬스케어 스타트업</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;아이디어만 있었는데 SnapPlug에서 완전한 웹서비스로 만들어줬어요. 사용자들이 정말 좋아하고, 지금은 월 매출 500만원을 달성했어요.&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-
-              {/* Testimonial 3 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">이</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">이원장</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">치과 병원 운영</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;예약 누락이 완전히 사라졌어요. 환자들도 온라인으로 편하게 예약하고, 저희는 진료에만 집중할 수 있게 되었습니다. 정말 감사해요.&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-
-              {/* Testimonial 4 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">정</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">정대표</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">교육 사업</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;학생 관리가 자동화되니까 정말 편해요. 출석 체크, 과제 관리까지 모든 게 시스템으로 돌아가서 수업 준비에만 집중할 수 있어요.&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-
-              {/* Testimonial 5 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">최</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">최사장</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">미용실 운영</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;고객 예약 관리가 완전히 바뀌었어요. 더블부킹이나 누락이 전혀 없고, 고객들도 편리해해서 재방문율이 높아졌어요.&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-
-              {/* Testimonial 6 */}
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[#f0f0fa]/10 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-[#f0f0fa] font-bold text-lg">한</span>
-                  </div>
-                  <div>
-                    <div className="text-[#f0f0fa] font-medium">한대표</div>
-                    <div className="text-[#f0f0fa]/60 text-sm">온라인 쇼핑몰</div>
-                  </div>
-                </div>
-                <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-4">
-                  &quot;주문부터 배송까지 모든 프로세스가 자동화되니까 정말 놀라워요. 인력 비용도 절약되고 고객 만족도도 높아졌습니다.&quot;
-                </div>
-                <div className="flex text-yellow-400">
-                  {'★'.repeat(5)}
-                </div>
-              </div>
-            </div>
+            {/* Testimonials Carousel */}
+            <TestimonialsCarousel />
 
             {/* CTA Section */}
             <div className="text-center mt-16">
