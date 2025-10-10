@@ -298,14 +298,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
             <div className="text-center mb-16">
               <h2 
-                className="text-4xl lg:text-[36px] font-black mb-8" 
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-4 sm:mb-6 lg:mb-8" 
                 style={{ 
                   color: '#f0f0fa'
                 }}
               >
                 결과로 말합니다.
               </h2>
-              <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
               Snapplug의 시스템은 단순한 개발이 아니라, 대표님들의 시간, 매출, 그리고 성장의 변화를 만들어냅니다.
               <br />실제 고객들이 경험한 &apos;비즈니스가 스스로 움직이는 순간&apos;을 들어보세요.
               </p>
@@ -334,12 +334,12 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/60"></div>
               
               {/* 콘텐츠 */}
-              <div className="relative z-10 text-center mt-16 mb-16 px-6 sm:px-10 lg:px-12 py-8 max-w-full mx-auto">
-                <h3 className="text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-4">
-                  지금, 성공 스토리의 주인공이 되어보세요
+              <div className="relative z-10 text-center mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12 lg:mb-16 px-6 sm:px-10 lg:px-12 py-6 sm:py-8 max-w-full mx-auto">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-3 sm:mb-4">
+                  지금, 성공 스토리의<br className="sm:hidden" /> 주인공이 되어보세요
                 </h3>
-                <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 mb-6">
-                  아이디어만 있으면 충분합니다. 나머지는 SnapPlug와 함께 만들어봐요.
+                <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 mb-4 sm:mb-6">
+                  아이디어만 있으면 충분합니다.<br className="sm:hidden" /> 나머지는 SnapPlug와 함께 만들어봐요.
                 </p>
                 <ContactButton text="무료 상담 받기" />
               </div>
