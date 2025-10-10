@@ -26,7 +26,8 @@ export default function SpaceXHeader() {
   const navItems = [
     { href: "/", label: "HOME" },
     { href: "/about", label: "ABOUT" },
-    { href: "/service", label: "SERVICES" },
+    { href: "/service", label: "SERVICE" },
+    { href: "/showcases", label: "SHOWCASES" },
     { href: "/contacts", label: "CONTACTS" }
   ];
 

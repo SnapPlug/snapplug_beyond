@@ -40,7 +40,7 @@ export default function ContactButton({
         fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif',
         padding: '0 20px',
         borderRadius: '4px',
-        fontSize: '10px',
+        fontSize: '14px',
         fontWeight: 'normal',
         letterSpacing: '0.5px',
         height: '48px'

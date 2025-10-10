@@ -326,10 +326,10 @@ export default function Home() {
               {/* 콘텐츠 */}
               <div className="relative z-10 text-center mt-16 mb-16 p-8 max-w-full mx-auto">
                 <h3 className="text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-4">
-                  당신도 성공 스토리의 주인공이 되어보세요
+                  지금, 성공 스토리의 주인공이 되어보세요
                 </h3>
                 <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 mb-6">
-                  아이디어만 있으면 충분합니다. 나머지는 SnapPlug가 해드릴게요.
+                  아이디어만 있으면 충분합니다. 나머지는 SnapPlug와 함께 만들어봐요.
                 </p>
                 <ContactButton text="무료 상담 받기" />
               </div>
