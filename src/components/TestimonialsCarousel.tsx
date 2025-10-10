@@ -174,19 +174,19 @@ export default function TestimonialsCarousel() {
             key={testimonial.id}
             className="flex-shrink-0 w-[250px] px-2"
           >
-            <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6 h-full">
+            <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-6 h-full flex flex-col">
               {/* 별점 */}
               <div className="flex text-yellow-400 mb-4">
                 {'★'.repeat(5)}
               </div>
               
               {/* 후기 내용 */}
-              <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-6">
+              <div className="text-[#f0f0fa]/80 text-sm leading-relaxed mb-6 flex-grow">
                 {testimonial.content}
               </div>
               
-              {/* 작성자 정보 */}
-              <div className="flex items-center">
+              {/* 작성자 정보 - 카드 하단에 고정 */}
+              <div className="flex items-center mt-auto">
                 <div className={`w-12 h-12 ${testimonial.avatarColor} rounded-lg flex items-center justify-center mr-4`}>
                   <span className="text-white font-bold text-lg">{testimonial.avatar}</span>
                 </div>

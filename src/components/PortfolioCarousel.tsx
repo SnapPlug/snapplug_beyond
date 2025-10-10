@@ -140,15 +140,6 @@ export default function PortfolioCarousel() {
     }
   };
 
-  const nextSlide = () => {
-    const next = (currentSlide + 1) % portfolioData.length;
-    goToSlide(next);
-  };
-
-  const prevSlide = () => {
-    const prev = currentSlide === 0 ? portfolioData.length - 1 : currentSlide - 1;
-    goToSlide(prev);
-  };
 
   // 스크롤 이벤트 감지하여 currentSlide 업데이트
   useEffect(() => {
@@ -188,7 +179,7 @@ export default function PortfolioCarousel() {
           scrollBehavior: 'smooth'
         }}
       >
-        {portfolioData.map((item, index) => (
+        {portfolioData.map((item) => (
           <div 
             key={item.id}
             className="flex-shrink-0 w-[85%] h-[600px] relative mr-4 rounded-lg overflow-hidden"

@@ -236,8 +236,22 @@ export default function Home() {
         </FullScreenSection>
 
         {/* Portfolio Section */}
-        <section className="py-20 bg-[#121212]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 relative overflow-hidden">
+          {/* 배경 비디오 */}
+          <video 
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
+          
+          {/* 오버레이 */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
               <h2 
                 className="text-4xl lg:text-[36px] font-black mb-8" 
@@ -259,8 +273,19 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-[#000000]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section 
+          className="py-20 relative"
+          style={{
+            backgroundImage: 'url(/testimonials.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'top',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          {/* 오버레이 */}
+          <div className="absolute inset-0 bg-black/70"></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
               <h2 
                 className="text-4xl lg:text-[36px] font-black mb-8" 
@@ -272,16 +297,34 @@ export default function Home() {
               </h2>
               <p className="text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
               Snapplug의 시스템은 단순한 개발이 아니라, 대표님들의 시간, 매출, 그리고 성장의 변화를 만들어냅니다.
-              <br />실제 고객들이 경험한 '비즈니스가 스스로 움직이는 순간'을 들어보세요.
+              <br />실제 고객들이 경험한 &apos;비즈니스가 스스로 움직이는 순간&apos;을 들어보세요.
               </p>
             </div>
 
             {/* Testimonials Carousel */}
             <TestimonialsCarousel />
 
-            {/* CTA Section */}
-            <div className="text-center mt-16">
-              <div className="bg-[#121212] border border-[#f0f0fa]/10 rounded-lg p-8 max-w-full mx-auto">
+            
+                  </div>
+        </section>
+        {/* CTA Section */}
+        <div className="relative rounded-lg overflow-hidden">
+              {/* 배경 비디오 */}
+              <video 
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+              >
+                <source src="/cta.mp4" type="video/mp4" />
+              </video>
+              
+              {/* 오버레이 */}
+              <div className="absolute inset-0 bg-black/60"></div>
+              
+              {/* 콘텐츠 */}
+              <div className="relative z-10 text-center mt-16 mb-16 p-8 max-w-full mx-auto">
                 <h3 className="text-4xl lg:text-[36px] font-bold text-[#f0f0fa] mb-4">
                   당신도 성공 스토리의 주인공이 되어보세요
                 </h3>
@@ -291,8 +334,6 @@ export default function Home() {
                 <ContactButton text="무료 상담 받기" />
               </div>
             </div>
-          </div>
-        </section>
 
       </main>
 
