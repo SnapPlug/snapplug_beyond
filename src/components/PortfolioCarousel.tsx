@@ -321,47 +321,49 @@ export default function PortfolioCarousel() {
                 </div>
               </div>
 
-              {/* 모바일에서만 카드 아래에 표시되는 핵심지표와 버튼 */}
-              <div className="sm:hidden mt-4 px-4">
-                <div className="bg-black/60 rounded-lg p-4 mb-4 text-center">
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                    {item.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center">
-                        <div className="text-lg font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
-                          <span>{metric.value}</span>
-                          {metric.improvement && (
-                            <span className="text-xs ml-1" style={{ color: '#f0f0fa' }}>
-                              {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
-                            </span>
-                          )}
+              {/* 모바일에서만 카드 아래에 표시되는 핵심지표와 버튼 - expandedCard가 아닐 때만 표시 */}
+              {expandedCard !== item.id && (
+                <div className="sm:hidden mt-4 px-4">
+                  <div className="bg-black/60 rounded-lg p-4 mb-4 text-center">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                      {item.metrics.map((metric, idx) => (
+                        <div key={idx} className="text-center">
+                          <div className="text-lg font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
+                            <span>{metric.value}</span>
+                            {metric.improvement && (
+                              <span className="text-xs ml-1" style={{ color: '#f0f0fa' }}>
+                                {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-xs leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
                         </div>
-                        <div className="text-xs leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-start">
+                    <button 
+                      onClick={() => setExpandedCard(item.id)}
+                      className="bg-transparent border px-6 py-2 mb-4 rounded text-sm font-medium transition-colors"
+                      style={{ 
+                        borderColor: '#f0f0fa', 
+                        color: '#f0f0fa' 
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#f0f0fa';
+                        e.currentTarget.style.color = '#000000';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.color = '#f0f0fa';
+                      }}
+                    >
+                      자세히 보기
+                    </button>
                   </div>
                 </div>
-                
-                <div className="flex justify-start">
-                  <button 
-                    onClick={() => setExpandedCard(item.id)}
-                    className="bg-transparent border px-6 py-2 mb-4 rounded text-sm font-medium transition-colors"
-                    style={{ 
-                      borderColor: '#f0f0fa', 
-                      color: '#f0f0fa' 
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#f0f0fa';
-                      e.currentTarget.style.color = '#000000';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.color = '#f0f0fa';
-                    }}
-                  >
-                    자세히 보기
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         ))}
