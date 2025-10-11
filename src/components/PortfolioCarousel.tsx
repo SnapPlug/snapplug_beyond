@@ -211,7 +211,7 @@ export default function PortfolioCarousel() {
                 <div style={{ color: '#f0f0fa' }}>
                   {expandedCard === item.id ? (
                     /* 상세 스토리 - 스크롤 가능 */
-                    <div className="space-y-3 sm:space-y-4 lg:space-y-6 max-h-full overflow-y-auto">
+                    <div className="space-y-3 sm:space-y-4 lg:space-y-6 max-h-[320px] sm:max-h-[380px] lg:max-h-[450px] overflow-y-auto pr-2">
                       <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-black mb-3 sm:mb-4 lg:mb-6 leading-tight" style={{ color: '#f0f0fa' }}>
                         {item.title} 스토리
                       </h3>
