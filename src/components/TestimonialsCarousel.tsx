@@ -108,16 +108,33 @@ const testimonialsData: Testimonial[] = [
 export default function TestimonialsCarousel() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+  const [cardWidth, setCardWidth] = useState(254); // 기본값: 데스크톱
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
 
+  // 클라이언트 마운트 및 화면 크기 감지
+  useEffect(() => {
+    setIsMounted(true);
+    
+    const updateCardWidth = () => {
+      setCardWidth(window.innerWidth < 640 ? 222 : 254);
+    };
+    
+    updateCardWidth();
+    window.addEventListener('resize', updateCardWidth);
+    
+    return () => {
+      window.removeEventListener('resize', updateCardWidth);
+    };
+  }, []);
+
   // 기차처럼 연속적인 슬라이딩
   useEffect(() => {
-    if (isAutoPlaying) {
+    if (isAutoPlaying && isMounted) {
       const animate = () => {
         setScrollPosition((prevPosition) => {
           const newPosition = prevPosition + 1.2; // 매 프레임마다 1.2px씩 이동
-          const cardWidth = window.innerWidth < 640 ? 222 : 254; // 모바일: 220px + 2px, 데스크톱: 250px + 4px
           const maxScroll = testimonialsData.length * cardWidth;
           
           // 마지막에 도달하면 처음으로 리셋
@@ -139,7 +156,7 @@ export default function TestimonialsCarousel() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, isMounted, cardWidth]);
 
   // 마우스 호버 시 자동 재생 일시정지
   const handleMouseEnter = () => {
@@ -161,8 +178,8 @@ export default function TestimonialsCarousel() {
         ref={containerRef}
         className="flex"
         style={{ 
-          transform: `translateX(-${scrollPosition}px)`,
-          width: `${testimonialsData.length * (typeof window !== 'undefined' && window.innerWidth < 640 ? 222 : 254)}px`
+          transform: `translateX(-${scrollPosition.toFixed(0)}px)`,
+          width: `${testimonialsData.length * cardWidth}px`
         }}
       >
         {testimonialsData.map((testimonial) => (

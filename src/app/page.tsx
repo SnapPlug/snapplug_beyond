@@ -2,7 +2,7 @@ import SpaceXHeader from "@/components/SpaceXHeader";
 import FullScreenSection from "@/components/FullScreenSection";
 import ContactButton from "@/components/ContactButton";
 import AnimatedCounter from "../components/AnimatedCounter";
-import PortfolioCarousel from "@/components/PortfolioCarousel";
+import PortfolioCarousel from "../components/PortfolioCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 
 /**

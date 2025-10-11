@@ -1,7 +1,6 @@
-
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 /**
  * 포트폴리오 캐러셀 컴포넌트
@@ -10,6 +9,7 @@ import React, { useState, useRef, useEffect } from 'react';
  * - 터치/마우스 드래그로 슬라이딩 가능
  * - 페이지네이션 인디케이터
  * - 자동 재생 기능
+ * - 상세 스토리 스크롤 기능
  */
 
 interface PortfolioItem {
@@ -34,7 +34,7 @@ const portfolioData: PortfolioItem[] = [
   {
     id: 1,
     title: "센터 운영 관리 서비스",
-    category: "카카오톡 기반 자동화 시스템으로 예약•회원•스케줄 관리까지. 별도의 앱 없이, 누구나 바로 사용할 수 있는 운영 혁신 솔루션.",
+    category: "카카오톡 기반으로 별도의 앱 없이. 회원•수업•예약•회원권 관리를 가장 쉽게 할 수 있는 센터 운영 혁신 솔루션.",
     image: "/SNAPCLUB DEMO.mp4",
     isVideo: true,
     metrics: [
@@ -44,9 +44,9 @@ const portfolioData: PortfolioItem[] = [
       { label: "강사 및 회원 만족도", value: "98%", improvement: "유지" }
     ],
     story: {
-      challenge: "필라테스 센터 원장님과 이야기를 나누던 중, 기존 예약 및 센터 운영 관리 시스템의 문제점을 발견했습니다. 불필요한 기능이 많고 복잡하게 설계되어 있어서 원하는 정보를 보기 위해 여러 페이지와 메뉴를 이동해야 했고, 회원권 잔여 기간 모니터링이 되지 않아 수강 연장 요청이나 추가 매출 향상을 위한 마케팅 활동을 하지 못하고 있었습니다.",
-      solution: "불필요한 기능과 복잡한 인터페이스를 사용자 입장에서 완전히 재설계했습니다. 정말 필요한 기능만 남기고 직관적이고 단순한 사용법으로 회원 예약 관리 시스템을 업그레이드했습니다. 회원들은 별도의 앱 설치 없이 카카오톡 기반으로 모든 예약을 자동 처리할 수 있게 되었고, 예약, 일정, 회원권 관리, 알림까지 하나의 플로우로 통합했습니다.",
-      result: "대표님은 운영에 필요한 루틴을 완전히 덜어내고 센터는 고객 중심의 '스마트 운영 시스템'으로 전환되었습니다. 회원들은 '카톡으로 이렇게 쉽게 예약할 수 있다니'라며 만족해하고, 원장님은 '이제 정말 필요한 정보만 한눈에 보인다'고 합니다. 회원권 관리가 자동화되어 수강 연장률이 크게 향상되었고, 센터 매출은 2배로 늘었습니다."
+      challenge: "기존에 사용하던 예약 및 센터 운영 관리 시스템에 불필요한 기능이 많고 복잡하게 설계되어 있어서 원하는 정보를 보기 위해 복잡한 단계를 거쳐야만 했고, 회원권 잔여 기간 모니터링이 되지 않아 회원권 관리가 되지 않고 있었습니다.",
+      solution: "불필요한 기능과 복잡한 인터페이스를 없애고 꼭 필요한 기능만 남겨서 전체 시스템을 재설계했습니다. 회원들은 별도 앱 없이 카카오톡으로 모든 예약을 처리할 수 있게 되었고, 예약, 수업, 회원권 관리까지 하나의 시스템으로 통합했습니다.",
+      result: "불필요한 부분이 완벽히 사라진 사용자 중심의 운영 시스템으로 전환되어, 회원•수업•예약•회원권 관리가 자동화되어 수강연장률이 크게 개선되었고 매출이 2배로 늘었습니다."
     }
   },
   {
@@ -69,7 +69,7 @@ const portfolioData: PortfolioItem[] = [
   },
   {
     id: 3,
-    title: "종합학원 AI 상담 자동화 시스템",
+    title: "종합학원 상담 자동화 시스템",
     category: "상담부터 진단, 로드맵까지 자동으로. 교육의 본질에 집중할 수 있는 자동화 시스템",
     image: "/rootnroute.png",
     isVideo: false,
@@ -141,7 +141,6 @@ export default function PortfolioCarousel() {
     }
   };
 
-
   // 스크롤 이벤트 감지하여 currentSlide 업데이트
   useEffect(() => {
     const handleScroll = () => {
@@ -160,7 +159,6 @@ export default function PortfolioCarousel() {
       return () => container.removeEventListener('scroll', handleScroll);
     }
   }, []);
-
 
   return (
     <div className="relative">
@@ -183,11 +181,8 @@ export default function PortfolioCarousel() {
         {portfolioData.map((item) => (
           <div 
             key={item.id}
-            className="flex-shrink-0 w-[90%] mr-6"
+            className="flex-shrink-0 w-[90%] h-[450px] sm:h-[500px] lg:h-[600px] relative mr-6 rounded-lg overflow-hidden"
             style={{ scrollSnapAlign: 'start' }}
-          >
-          <div 
-            className="h-[450px] sm:h-[500px] lg:h-[600px] relative rounded-lg overflow-hidden"
           >
             {/* 배경 비디오/이미지 */}
             {item.isVideo ? (
@@ -210,43 +205,100 @@ export default function PortfolioCarousel() {
               expandedCard === item.id ? 'bg-black/80' : 'bg-black/60'
             }`}></div>
 
-                {/* 콘텐츠 오버레이 */}
-                <div className="relative z-10 h-full flex flex-col justify-between">
-                  <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-12">
-                    <div style={{ color: '#f0f0fa' }}>
-                      {expandedCard === item.id ? (
-                        /* 상세 스토리 */
-                        <div className="space-y-3 sm:space-y-4 lg:space-y-6">
-                          <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-black mb-3 sm:mb-4 lg:mb-6 leading-tight" style={{ color: '#f0f0fa' }}>
-                            {item.title} 스토리
-                          </h3>
-                          
-                          <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                            <div>
-                              <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Before</h4>
-                              <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                                {item.story.challenge}
-                              </p>
-                            </div>
-                            
-                            <div>
-                              <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Solution</h4>
-                              <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                                {item.story.solution}
-                              </p>
-                            </div>
-                            
-                            <div>
-                              <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>After</h4>
-                              <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                                {item.story.result}
-                              </p>
-                            </div>
-                          </div>
+            {/* 콘텐츠 오버레이 */}
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-12">
+                <div style={{ color: '#f0f0fa' }}>
+                  {expandedCard === item.id ? (
+                    /* 상세 스토리 - 스크롤 가능 */
+                    <div className="space-y-3 sm:space-y-4 lg:space-y-6 max-h-full overflow-y-auto">
+                      <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-black mb-3 sm:mb-4 lg:mb-6 leading-tight" style={{ color: '#f0f0fa' }}>
+                        {item.title} 스토리
+                      </h3>
+                      
+                      <div className="space-y-2 sm:space-y-3 lg:space-y-4">
+                        <div>
+                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Before</h4>
+                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                            {item.story.challenge}
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Solution</h4>
+                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                            {item.story.solution}
+                          </p>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>After</h4>
+                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                            {item.story.result}
+                          </p>
+                        </div>
+                      </div>
 
+                      <button 
+                        onClick={() => setExpandedCard(null)}
+                        className="bg-transparent border px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded text-xs sm:text-sm lg:text-base font-medium transition-colors"
+                        style={{ 
+                          borderColor: '#f0f0fa', 
+                          color: '#f0f0fa' 
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#f0f0fa';
+                          e.currentTarget.style.color = '#000000';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#f0f0fa';
+                        }}
+                      >
+                        뒤로 가기
+                      </button>
+                    </div>
+                  ) : (
+                    /* 기본 콘텐츠 */
+                    <>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 sm:mb-3 leading-tight" style={{ color: '#f0f0fa' }}>
+                        {item.title}
+                      </h3>
+                      <div className="text-xs sm:text-sm lg:text-base font-medium mb-4 sm:mb-6 leading-relaxed" style={{ color: '#f0f0fa' }}>
+                        {item.category.split('. ').map((line, index, array) => (
+                          <span key={index}>
+                            {line}{index < array.length - 1 ? '.' : ''}
+                            {index < array.length - 1 && <br />}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* 태블릿 이상에서만 표시되는 핵심지표와 버튼 */}
+                      <div className="hidden sm:block">
+                        {/* 핵심지표 */}
+                        <div className="bg-black/40 rounded-lg p-4 lg:p-6 mb-8 lg:mb-12 text-center max-w-sm">
+                          <div className="grid grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-3">
+                            {item.metrics.map((metric, idx) => (
+                              <div key={idx} className="text-center">
+                                <div className="text-xl lg:text-2xl xl:text-3xl font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
+                                  <span>{metric.value}</span>
+                                  {metric.improvement && (
+                                    <span className="text-sm lg:text-base ml-1" style={{ color: '#f0f0fa' }}>
+                                      {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="text-sm lg:text-base leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* CTA 버튼 */}
+                        <div className="flex gap-4">
                           <button 
-                            onClick={() => setExpandedCard(null)}
-                            className="bg-transparent border px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded text-xs sm:text-sm lg:text-base font-medium transition-colors"
+                            onClick={() => setExpandedCard(item.id)}
+                            className="bg-transparent border px-8 lg:px-10 py-3 lg:py-4 rounded text-base lg:text-lg font-medium transition-colors"
                             style={{ 
                               borderColor: '#f0f0fa', 
                               color: '#f0f0fa' 
@@ -260,136 +312,75 @@ export default function PortfolioCarousel() {
                               e.currentTarget.style.color = '#f0f0fa';
                             }}
                           >
-                            뒤로 가기
+                            자세히 보기
                           </button>
                         </div>
-                      ) : (
-                        /* 기본 콘텐츠 */
-                        <>
-                          <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 sm:mb-3 leading-tight" style={{ color: '#f0f0fa' }}>
-                              {item.title}
-                        </h3>
-                          <div className="text-xs sm:text-sm lg:text-base font-medium mb-4 sm:mb-6 leading-relaxed" style={{ color: '#f0f0fa' }}>
-                            {item.category.split('. ').map((line, index, array) => (
-                              <span key={index}>
-                                {line}{index < array.length - 1 ? '.' : ''}
-                                {index < array.length - 1 && <br />}
-                              </span>
-                            ))}
-                          </div>
-                          {/* 모바일에서 보이는 핵심지표와 버튼 (카드 내부) */}
-                          <div className="sm:hidden">
-                            {/* 핵심지표 */}
-                            <div className="bg-black/40 rounded-lg p-3 mb-4 text-center max-w-sm">
-                              <div className="grid grid-cols-2 gap-x-3 gap-y-2">
-                                {item.metrics.map((metric, idx) => (
-                                  <div key={idx} className="text-center">
-                                    <div className="text-lg font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
-                                      <span>{metric.value}</span>
-                                      {metric.improvement && (
-                                        <span className="text-xs ml-1" style={{ color: '#f0f0fa' }}>
-                                          {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
-                                        </span>
-                                      )}
-                                    </div>
-                                    <div className="text-xs leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
 
-                            {/* CTA 버튼 */}
-                            <div className="flex gap-4">
-                              <button 
-                                onClick={() => setExpandedCard(item.id)}
-                                className="bg-transparent border px-6 py-2 rounded text-sm font-medium transition-colors"
-                                style={{ 
-                                  borderColor: '#f0f0fa', 
-                                  color: '#f0f0fa' 
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#f0f0fa';
-                                  e.currentTarget.style.color = '#000000';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.backgroundColor = 'transparent';
-                                  e.currentTarget.style.color = '#f0f0fa';
-                                }}
-                              >
-                                자세히 보기
-                              </button>
-                            </div>
-                          </div>
-
-                          {/* 태블릿 이상에서만 표시되는 핵심지표와 버튼 */}
-                          <div className="hidden sm:block">
-                            {/* 핵심지표 */}
-                            <div className="bg-black/40 rounded-lg p-4 lg:p-6 mb-8 lg:mb-12 text-center max-w-sm">
-                              <div className="grid grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-3">
-                                {item.metrics.map((metric, idx) => (
-                                  <div key={idx} className="text-center">
-                                    <div className="text-xl lg:text-2xl xl:text-3xl font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
-                                      <span>{metric.value}</span>
-                                      {metric.improvement && (
-                                        <span className="text-sm lg:text-base ml-1" style={{ color: '#f0f0fa' }}>
-                                          {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
-                                        </span>
-                                      )}
-                                    </div>
-                                    <div className="text-sm lg:text-base leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-
-                            {/* CTA 버튼 */}
-                            <div className="flex gap-4">
-                              <button 
-                                onClick={() => setExpandedCard(item.id)}
-                                className="bg-transparent border px-8 lg:px-10 py-3 lg:py-4 rounded text-base lg:text-lg font-medium transition-colors"
-                                style={{ 
-                                  borderColor: '#f0f0fa', 
-                                  color: '#f0f0fa' 
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#f0f0fa';
-                                  e.currentTarget.style.color = '#000000';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.backgroundColor = 'transparent';
-                                  e.currentTarget.style.color = '#f0f0fa';
-                                }}
-                              >
-                                자세히 보기
-                              </button>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
+              {/* 모바일에서만 카드 아래에 표시되는 핵심지표와 버튼 */}
+              <div className="sm:hidden mt-4 px-4">
+                <div className="bg-black/60 rounded-lg p-4 mb-4 text-center">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+                    {item.metrics.map((metric, idx) => (
+                      <div key={idx} className="text-center">
+                        <div className="text-lg font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
+                          <span>{metric.value}</span>
+                          {metric.improvement && (
+                            <span className="text-xs ml-1" style={{ color: '#f0f0fa' }}>
+                              {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-xs leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
+                      </div>
+                    ))}
                   </div>
+                </div>
+                
+                <div className="flex justify-start">
+                  <button 
+                    onClick={() => setExpandedCard(item.id)}
+                    className="bg-transparent border px-6 py-2 mb-4 rounded text-sm font-medium transition-colors"
+                    style={{ 
+                      borderColor: '#f0f0fa', 
+                      color: '#f0f0fa' 
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#f0f0fa';
+                      e.currentTarget.style.color = '#000000';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#f0f0fa';
+                    }}
+                  >
+                    자세히 보기
+                  </button>
+                </div>
               </div>
             </div>
-
-            {/* 모바일 아래 블록 제거 (카드 내부로 이동 완료) */}
           </div>
         ))}
-          </div>
+      </div>
 
-          {/* 페이지네이션 인디케이터 */}
-          <div className="flex justify-center mt-6 sm:mt-8 lg:mt-12 space-x-2 sm:space-x-3">
-            {portfolioData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`rounded-full transition-all duration-300 ${
-                  index === currentSlide 
-                    ? 'bg-white w-6 sm:w-8 h-2' 
-                    : 'bg-white/40 hover:bg-white/60 w-2 h-2'
-                }`}
-              />
-            ))}
-          </div>
+      {/* 페이지네이션 인디케이터 */}
+      <div className="flex justify-center mt-6 sm:mt-8 lg:mt-12 space-x-2 sm:space-x-3">
+        {portfolioData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-white w-6 sm:w-8 h-2' 
+                : 'bg-white/40 hover:bg-white/60 w-2 h-2'
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
