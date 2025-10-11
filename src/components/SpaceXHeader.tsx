@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 /**
  * SpaceX 스타일의 헤더 컴포넌트
@@ -20,6 +20,7 @@ import { useState } from "react";
  */
 export default function SpaceXHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // 네비게이션 메뉴 설정
@@ -36,14 +37,27 @@ export default function SpaceXHeader() {
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // 같은 페이지 내 앵커 링크인 경우 부드러운 스크롤 처리
+    // 앵커 링크 처리 (/#showcases)
     if (href.startsWith('/#')) {
       e.preventDefault();
       const targetId = href.substring(2); // '/#showcases' -> 'showcases'
-      const targetElement = document.getElementById(targetId);
       
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // 현재 홈 페이지에 있는 경우
+      if (pathname === '/') {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        // 다른 페이지에 있는 경우 - 홈으로 이동 후 스크롤
+        router.push('/');
+        // 페이지 로드 후 스크롤하도록 타이머 설정
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 300);
       }
       
       // 모바일 메뉴 닫기

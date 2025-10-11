@@ -2,6 +2,7 @@
 
 import SpaceXHeader from "@/components/SpaceXHeader";
 import ContactButton from "@/components/ContactButton";
+import { useRouter } from "next/navigation";
 
 /**
  * About 페이지 컴포넌트 - Ethos Page
@@ -10,6 +11,7 @@ import ContactButton from "@/components/ContactButton";
  * "나의 이야기 → 우리가 믿는 가치 → 우리가 만드는 세상" 순서
  */
 export default function About() {
+  const router = useRouter();
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
       <SpaceXHeader />
@@ -198,7 +200,10 @@ export default function About() {
             </div>
 
             {/* CTA Button */}
-            <ContactButton text="지금 함께 시작하기" />
+            <ContactButton 
+              text="지금 함께 시작하기" 
+              onClick={() => router.push('/contacts')}
+            />
           </div>
         </section>
       </main>

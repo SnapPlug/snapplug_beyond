@@ -1,9 +1,12 @@
+"use client";
+
 import SpaceXHeader from "@/components/SpaceXHeader";
 import FullScreenSection from "@/components/FullScreenSection";
 import ContactButton from "@/components/ContactButton";
 import AnimatedCounter from "../components/AnimatedCounter";
 import PortfolioCarousel from "../components/PortfolioCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
+import { useRouter } from "next/navigation";
 
 /**
  * 홈 페이지 컴포넌트
@@ -11,6 +14,7 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
  * SpaceXHeader와 FullScreenSection을 포함한 메인 랜딩 페이지
  */
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
       <SpaceXHeader />
@@ -34,7 +38,10 @@ export default function Home() {
           <p className="text-lg sm:text-xl text-[#f0f0fa]/70 max-w-2xl mb-8 mx-auto">
             아이디어가 현실이 되고, 꿈이 이루어지는 곳
           </p>
-          <ContactButton text="시작하기" />
+          <ContactButton 
+            text="시작하기" 
+            onClick={() => router.push('/contacts')}
+          />
 
           {/* 통계 지표 섹션 */}
           <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-3xl mx-auto px-4">
@@ -119,7 +126,10 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="mt-8 sm:mt-12">
-                  <ContactButton text="자세히 알아보기" />
+                  <ContactButton 
+                    text="자세히 알아보기" 
+                    onClick={() => router.push('/about')}
+                  />
                 </div>
               </div>
               
@@ -239,7 +249,10 @@ export default function Home() {
               
               {/* CTA Button */}
               <div className="mt-8 sm:mt-12">
-                <ContactButton text="자세히 보기" />
+                <ContactButton 
+                  text="자세히 보기" 
+                  onClick={() => router.push('/service')}
+                />
               </div>
             </div>
           </div>
@@ -341,7 +354,10 @@ export default function Home() {
                 <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 mb-4 sm:mb-6">
                   아이디어만 있으면 충분합니다.<br className="sm:hidden" /> 나머지는 SnapPlug와 함께 만들어봐요.
                 </p>
-                <ContactButton text="무료 상담 받기" />
+                <ContactButton 
+                  text="무료 상담 받기" 
+                  onClick={() => router.push('/contacts')}
+                />
               </div>
             </div>
 
