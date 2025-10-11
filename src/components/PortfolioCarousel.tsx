@@ -206,120 +206,120 @@ export default function PortfolioCarousel() {
             }`}></div>
 
             {/* 콘텐츠 오버레이 */}
-            <div className="relative z-10 h-full flex flex-col justify-between">
-              <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-12">
-                <div style={{ color: '#f0f0fa' }}>
-                  {expandedCard === item.id ? (
-                    /* 상세 스토리 - 스크롤 가능 */
-                    <div className="space-y-3 sm:space-y-4 lg:space-y-6 max-h-[320px] sm:max-h-[380px] lg:max-h-[450px] overflow-y-auto pr-2">
-                      <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-black mb-3 sm:mb-4 lg:mb-6 leading-tight" style={{ color: '#f0f0fa' }}>
-                        {item.title} 스토리
-                      </h3>
+            <div className={`relative z-10 h-full flex flex-col ${expandedCard === item.id ? '' : 'justify-between'}`}>
+              {expandedCard === item.id ? (
+                /* 상세 스토리 - 카드 전체를 스크롤 가능하게 */
+                <div className="h-full overflow-y-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12" style={{ color: '#f0f0fa' }}>
+                  <div className="space-y-3 sm:space-y-4 lg:space-y-6 pr-2">
+                    <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-black mb-3 sm:mb-4 lg:mb-6 leading-tight" style={{ color: '#f0f0fa' }}>
+                      {item.title} 스토리
+                    </h3>
+                    
+                    <div className="space-y-2 sm:space-y-3 lg:space-y-4">
+                      <div>
+                        <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Before</h4>
+                        <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                          {item.story.challenge}
+                        </p>
+                      </div>
                       
-                      <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                        <div>
-                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Before</h4>
-                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                            {item.story.challenge}
-                          </p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Solution</h4>
-                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                            {item.story.solution}
-                          </p>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>After</h4>
-                          <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
-                            {item.story.result}
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>Solution</h4>
+                        <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                          {item.story.solution}
+                        </p>
                       </div>
-
-                      <button 
-                        onClick={() => setExpandedCard(null)}
-                        className="bg-transparent border px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded text-xs sm:text-sm lg:text-base font-medium transition-colors"
-                        style={{ 
-                          borderColor: '#f0f0fa', 
-                          color: '#f0f0fa' 
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#f0f0fa';
-                          e.currentTarget.style.color = '#000000';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#f0f0fa';
-                        }}
-                      >
-                        뒤로 가기
-                      </button>
+                      
+                      <div>
+                        <h4 className="text-sm sm:text-base lg:text-lg font-bold mb-1 sm:mb-2" style={{ color: '#f0f0fa' }}>After</h4>
+                        <p className="leading-relaxed text-xs sm:text-sm lg:text-base" style={{ color: '#f0f0fa' }}>
+                          {item.story.result}
+                        </p>
+                      </div>
                     </div>
-                  ) : (
-                    /* 기본 콘텐츠 */
-                    <>
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 sm:mb-3 leading-tight" style={{ color: '#f0f0fa' }}>
-                        {item.title}
-                      </h3>
-                      <div className="text-xs sm:text-sm lg:text-base font-medium mb-4 sm:mb-6 leading-relaxed" style={{ color: '#f0f0fa' }}>
-                        {item.category.split('. ').map((line, index, array) => (
-                          <span key={index}>
-                            {line}{index < array.length - 1 ? '.' : ''}
-                            {index < array.length - 1 && <br />}
-                          </span>
-                        ))}
-                      </div>
 
-                      {/* 태블릿 이상에서만 표시되는 핵심지표와 버튼 */}
-                      <div className="hidden sm:block">
-                        {/* 핵심지표 */}
-                        <div className="bg-black/40 rounded-lg p-4 lg:p-6 mb-8 lg:mb-12 text-center max-w-sm">
-                          <div className="grid grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-3">
-                            {item.metrics.map((metric, idx) => (
-                              <div key={idx} className="text-center">
-                                <div className="text-xl lg:text-2xl xl:text-3xl font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
-                                  <span>{metric.value}</span>
-                                  {metric.improvement && (
-                                    <span className="text-sm lg:text-base ml-1" style={{ color: '#f0f0fa' }}>
-                                      {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
-                                    </span>
-                                  )}
-                                </div>
-                                <div className="text-sm lg:text-base leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* CTA 버튼 */}
-                        <div className="flex gap-4">
-                          <button 
-                            onClick={() => setExpandedCard(item.id)}
-                            className="bg-transparent border px-8 lg:px-10 py-3 lg:py-4 rounded text-base lg:text-lg font-medium transition-colors"
-                            style={{ 
-                              borderColor: '#f0f0fa', 
-                              color: '#f0f0fa' 
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.backgroundColor = '#f0f0fa';
-                              e.currentTarget.style.color = '#000000';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.backgroundColor = 'transparent';
-                              e.currentTarget.style.color = '#f0f0fa';
-                            }}
-                          >
-                            자세히 보기
-                          </button>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                    <button 
+                      onClick={() => setExpandedCard(null)}
+                      className="bg-transparent border px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded text-xs sm:text-sm lg:text-base font-medium transition-colors"
+                      style={{ 
+                        borderColor: '#f0f0fa', 
+                        color: '#f0f0fa' 
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#f0f0fa';
+                        e.currentTarget.style.color = '#000000';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.color = '#f0f0fa';
+                      }}
+                    >
+                      뒤로 가기
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                /* 기본 콘텐츠 */
+                <div className="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 lg:pt-12">
+                  <div style={{ color: '#f0f0fa' }}>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 sm:mb-3 leading-tight" style={{ color: '#f0f0fa' }}>
+                      {item.title}
+                    </h3>
+                    <div className="text-xs sm:text-sm lg:text-base font-medium mb-4 sm:mb-6 leading-relaxed" style={{ color: '#f0f0fa' }}>
+                      {item.category.split('. ').map((line, index, array) => (
+                        <span key={index}>
+                          {line}{index < array.length - 1 ? '.' : ''}
+                          {index < array.length - 1 && <br />}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* 태블릿 이상에서만 표시되는 핵심지표와 버튼 */}
+                    <div className="hidden sm:block">
+                      {/* 핵심지표 */}
+                      <div className="bg-black/40 rounded-lg p-4 lg:p-6 mb-8 lg:mb-12 text-center max-w-sm">
+                        <div className="grid grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-3">
+                          {item.metrics.map((metric, idx) => (
+                            <div key={idx} className="text-center">
+                              <div className="text-xl lg:text-2xl xl:text-3xl font-bold mb-1 flex items-center justify-center" style={{ color: '#f0f0fa' }}>
+                                <span>{metric.value}</span>
+                                {metric.improvement && (
+                                  <span className="text-sm lg:text-base ml-1" style={{ color: '#f0f0fa' }}>
+                                    {metric.improvement === '감소' || metric.improvement === '단축' ? '↓' : '↑'}
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-sm lg:text-base leading-tight" style={{ color: '#f0f0fa' }}>{metric.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA 버튼 */}
+                      <div className="flex gap-4">
+                        <button 
+                          onClick={() => setExpandedCard(item.id)}
+                          className="bg-transparent border px-8 lg:px-10 py-3 lg:py-4 rounded text-base lg:text-lg font-medium transition-colors"
+                          style={{ 
+                            borderColor: '#f0f0fa', 
+                            color: '#f0f0fa' 
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#f0f0fa';
+                            e.currentTarget.style.color = '#000000';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '#f0f0fa';
+                          }}
+                        >
+                          자세히 보기
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* 모바일에서만 카드 아래에 표시되는 핵심지표와 버튼 - expandedCard가 아닐 때만 표시 */}
               {expandedCard !== item.id && (
