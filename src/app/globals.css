@@ -119,6 +119,21 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* 노치 영역 배경색 설정 */
+  html {
+    background-color: #121212;
+  }
+  
+  /* iOS Safari 노치 영역 처리 */
+  @supports (padding: max(0px)) {
+    body {
+      padding-top: max(env(safe-area-inset-top), 0px);
+      padding-bottom: max(env(safe-area-inset-bottom), 0px);
+      padding-left: max(env(safe-area-inset-left), 0px);
+      padding-right: max(env(safe-area-inset-right), 0px);
+    }
+  }
 }
 
 @layer utilities {
