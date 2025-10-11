@@ -1,7 +1,6 @@
 "use client";
 
 import SpaceXHeader from "@/components/SpaceXHeader";
-import FullScreenSection from "@/components/FullScreenSection";
 import ContactButton from "@/components/ContactButton";
 
 /**
@@ -45,7 +44,7 @@ export default function About() {
             {/* 감정 중심점 - Jason의 한 문장 */}
             <div className="bg-[#f0f0fa]/5 border border-[#f0f0fa]/20 rounded-lg p-6 sm:p-8 mx-auto mb-12">
               <p className="text-xl sm:text-2xl font-medium text-[#f0f0fa] italic leading-relaxed">
-                "누군가는 같이 고민해줬으면 좋겠다"
+                누군가는 같이 고민해줬으면 좋겠다
               </p>
               <p className="text-sm text-[#f0f0fa]/60 mt-4">— Jason, SnapPlug Founder</p>
             </div>
@@ -121,7 +120,7 @@ export default function About() {
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">공감에서 출발한다</h3>
                 <div className="mt-4 mb-4 text-xs text-[#f0f0fa]/60 italic">
-                  "우리가 만든 모든 구조는, 누군가의 고민에서 시작됐습니다."
+                  우리가 만든 모든 구조는, 누군가의 고민에서 시작됐습니다.
                 </div>
                 
                 <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
@@ -140,12 +139,12 @@ export default function About() {
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">실행으로 증명한다</h3>
                 <div className="mt-4 mb-4 text-xs text-[#f0f0fa]/60 italic">
-                  "계획보다 행동이 빠른 팀, 그게 우리의 강점입니다."
+                  계획보다 행동이 빠른 팀, 그게 우리의 강점입니다.
                 </div>
                 <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
                   우리는 단순히 컨설팅하지 않습니다.<br />
                   함께 구체화하고, 테스트하고, 바로 실행합니다.<br />
-                  SnapPlug는 '생각을 현실로 옮기는 팀'으로서<br />
+                  SnapPlug는 생각을 현실로 옮기는 팀으로서<br />
                   아이디어가 실제 매출과 성장으로 이어지도록 설계합니다.
                 </p>
                
@@ -158,7 +157,7 @@ export default function About() {
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">함께 성장한다</h3>
                 <div className="mt-4 mb-4 text-xs text-[#f0f0fa]/60 italic">
-                  "우리가 성장할 때, 고객도 함께 성장합니다."
+                  우리가 성장할 때, 고객도 함께 성장합니다.
                 </div>
                 <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
                   한 번의 프로젝트로 끝내지 않습니다.<br />

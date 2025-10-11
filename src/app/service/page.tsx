@@ -1,392 +1,250 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
 import SpaceXHeader from "@/components/SpaceXHeader";
-import FullScreenSection from "@/components/FullScreenSection";
 import ContactButton from "@/components/ContactButton";
-import AnimatedCounter from "../../components/AnimatedCounter";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-/**
- * Service 페이지 컴포넌트
- * 
- * SnapPlug의 주요 서비스들을 소개하는 페이지
- * 회원•수업•예약•회원권 관리에 특화된 솔루션 중심
- */
 export default function Service() {
-  return (
-    <div className="font-sans bg-[#121212] text-[#f0f0fa]">
-      <SpaceXHeader />
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const loadGSAP = async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       
-      {/* Hero Section */}
-      <main>
-        <FullScreenSection 
-          backgroundVideo="/service.mp4"
-          overlay={true}
-          overlayOpacity={0.4}
-        >
-          <h1 
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6" 
-            style={{ 
-              color: '#F0F0FA'
-            }}
-          >
-            OUR SERVICES
-          </h1>
-          <p className="text-lg sm:text-xl text-[#f0f0fa]/70 max-w-2xl mb-8 mx-auto">
-            비즈니스가 스스로 성장하는 완벽한 솔루션
-          </p>
-          <ContactButton text="서비스 문의" />
+      gsap.registerPlugin(ScrollTrigger);
 
-          {/* 핵심 서비스 지표 */}
-          <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 max-w-3xl mx-auto px-4">
-            <div className="text-center">
-              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-lg sm:text-2xl lg:text-3xl">
-                  <AnimatedCounter end={100} duration={2000} />
-                </span>
-                <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
-              </div>
-              <div className="text-xs sm:text-sm text-[#f0f0fa]/70">자동화 커버리지</div>
-              <div className="text-xs text-[#f0f0fa]/50">모든 업무 프로세스 자동화</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-lg sm:text-2xl lg:text-3xl">
-                  <AnimatedCounter end={70} duration={2200} />
-                </span>
-                <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
-              </div>
-              <div className="text-xs sm:text-sm text-[#f0f0fa]/70">운영시간 절감</div>
-              <div className="text-xs text-[#f0f0fa]/50">반복 업무 자동화로 효율 극대화</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-lg sm:text-2xl lg:text-3xl">
-                  <AnimatedCounter end={98} duration={2500} />
-                </span>
-                <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
-              </div>
-              <div className="text-xs sm:text-sm text-[#f0f0fa]/70">고객 만족도</div>
-              <div className="text-xs text-[#f0f0fa]/50">사용자 친화적 인터페이스</div>
-            </div>
-            <div className="text-center">
-              <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
-                <span className="text-lg sm:text-2xl lg:text-3xl">
-                  <AnimatedCounter end={24} duration={2000} />
-                </span>
-                <span className="text-sm sm:text-lg lg:text-xl ml-1">시간</span>
-              </div>
-              <div className="text-xs sm:text-sm text-[#f0f0fa]/70">실시간 모니터링</div>
-              <div className="text-xs text-[#f0f0fa]/50">언제든 상태 확인 가능</div>
-            </div>
-          </div>
-        </FullScreenSection>
+      // 순차 등장 애니메이션
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 70%",
+          end: "bottom 20%",
+          toggleActions: "play none none none"
+        }
+      });
 
-        {/* Core Services Section */}
-        <FullScreenSection 
-          backgroundImage="/about.jpg"
-          overlay={true}
-          overlayOpacity={0.5}
-        >
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-6 sm:mb-8 leading-tight" 
-                style={{ 
-                  fontFamily: 'var(--font-pirulen), sans-serif',
-                  color: '#f0f0fa'
-                }}
-              >
-                핵심 서비스
-              </h2>
-              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto">
-                비즈니스 운영의 핵심 요소들을 완벽하게 통합한 솔루션
-              </p>
-            </div>
+      // 각 카드를 순차적으로 서서히 등장시키기
+      cardRefs.current.forEach((ref, cardIndex) => {
+        if (ref) {
+          tl.fromTo(ref, 
+            {
+              scale: 0.95,
+              opacity: 0,
+              y: 40,
+              transformOrigin: "center center"
+            },
+            {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              duration: 1.2,
+              ease: "power1.inOut"
+            },
+            cardIndex * 0.2  // 0.2초 간격으로 순차 등장
+          );
+        }
+      });
+    };
 
-            {/* 4개 핵심 서비스 카드 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              {/* 회원 관리 */}
-              <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-lg p-6 sm:p-8 text-center relative overflow-hidden group hover:border-[#f0f0fa]/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4">👥</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">회원 관리</h3>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
-                    회원 정보, 등급, 이력까지 체계적으로 관리하고 
-                    개인별 맞춤 서비스를 제공합니다.
-                  </p>
-                  <div className="mt-4 text-xs text-[#f0f0fa]/60">
-                    • 회원 정보 통합 관리<br />
-                    • 등급별 차별화 서비스<br />
-                    • 이용 이력 추적 분석
-                  </div>
-                </div>
-              </div>
+    loadGSAP();
+  }, []);
 
-              {/* 수업 관리 */}
-              <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-lg p-6 sm:p-8 text-center relative overflow-hidden group hover:border-[#f0f0fa]/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4">📚</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">수업 관리</h3>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
-                    강사별, 시간별, 수준별 수업을 효율적으로 관리하고 
-                    최적의 커리큘럼을 제공합니다.
-                  </p>
-                  <div className="mt-4 text-xs text-[#f0f0fa]/60">
-                    • 스케줄 자동 관리<br />
-                    • 강사별 수업 배정<br />
-                    • 진도 및 성과 추적
-                  </div>
-                </div>
-              </div>
 
-              {/* 예약 관리 */}
-              <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-lg p-6 sm:p-8 text-center relative overflow-hidden group hover:border-[#f0f0fa]/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4">📅</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">예약 관리</h3>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
-                    실시간 예약 현황을 확인하고 중복, 충돌 없이 
-                    완벽한 예약 시스템을 운영합니다.
-                  </p>
-                  <div className="mt-4 text-xs text-[#f0f0fa]/60">
-                    • 실시간 예약 현황<br />
-                    • 자동 중복 방지<br />
-                    • 알림 및 리마인더
-                  </div>
-                </div>
-              </div>
+  return (
+    <div>
+      {/* SpaceX Header */}
+      <SpaceXHeader />
 
-              {/* 회원권 관리 */}
-              <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-lg p-6 sm:p-8 text-center relative overflow-hidden group hover:border-[#f0f0fa]/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4">🎫</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#f0f0fa] mb-4">회원권 관리</h3>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base leading-relaxed">
-                    회원권 발급, 사용, 연장까지 전 과정을 자동화하고 
-                    수익성을 극대화합니다.
-                  </p>
-                  <div className="mt-4 text-xs text-[#f0f0fa]/60">
-                    • 자동 회원권 발급<br />
-                    • 잔여 횟수 실시간 추적<br />
-                    • 만료 알림 및 연장 안내
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </FullScreenSection>
-
-        {/* Integration Benefits Section */}
-        <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
-          {/* 배경 비디오 */}
-          <video 
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay 
-            muted 
-            loop 
+      {/* Main Content - Section with Video */}
+      <section className="relative w-full overflow-hidden" style={{ minHeight: '100vh' }}>
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
             playsInline
           >
             <source src="/hero.mp4" type="video/mp4" />
           </video>
-          
-          {/* 오버레이 */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-6 sm:mb-8" 
-                style={{ 
-                  fontFamily: 'var(--font-pirulen), sans-serif',
-                  color: '#f0f0fa'
-                }}
-              >
-                통합의 힘
-              </h2>
-              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/80 max-w-3xl mx-auto">
-                모든 시스템이 하나로 연결되어 비즈니스가 스스로 성장합니다
-              </p>
-            </div>
-            
-            {/* 통합 혜택 카드 그리드 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              <div 
-                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
-                style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className="absolute inset-0 bg-[#121212]/70"></div>
-                <div className="relative z-10">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">완벽한 데이터 연동</div>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
-                    회원 정보가 예약으로, 예약이 수업으로, 수업이 회원권으로 자연스럽게 연결됩니다.
-                    <br /><br />
-                    중복 입력 없이, 실수 없이, 누락 없이 모든 데이터가 실시간으로 동기화되어 
-                    완벽한 비즈니스 운영이 가능합니다.
-                  </p>
-                </div>
-              </div>
-              
-              <div 
-                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
-                style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className="absolute inset-0 bg-[#121212]/70"></div>
-                <div className="relative z-10">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">자동화된 운영</div>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
-                    예약 확인, 회원권 만료 알림, 수업 준비까지 모든 것이 자동으로 처리됩니다.
-                    <br /><br />
-                    대표님은 이제 반복적인 업무에서 해방되어 진정한 비즈니스 성장에만 
-                    집중할 수 있습니다.
-                  </p>
-                </div>
-              </div>
-              
-              <div 
-                className="bg-[#121212]/60 border border-[#f0f0fa] rounded-lg p-6 sm:p-8 text-left relative overflow-hidden min-h-[300px] sm:min-h-[400px]"
-                style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className="absolute inset-0 bg-[#121212]/70"></div>
-                <div className="relative z-10">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#f0f0fa] mb-6 sm:mb-8">스마트한 분석</div>
-                  <p className="text-[#f0f0fa]/80 text-sm sm:text-base lg:text-[16px] mb-4 leading-relaxed">
-                    모든 운영 데이터가 하나의 대시보드에서 실시간으로 확인됩니다.
-                    <br /><br />
-                    매출, 회원 증가율, 인기 수업, 회원권 판매 현황까지 
-                    한눈에 파악하여 데이터 기반의 의사결정을 내릴 수 있습니다.
-                  </p>
-                </div>
-              </div>
+        </div>
+
+        {/* Overlay */}
+        <div 
+          className="absolute inset-0 bg-black"
+          style={{ opacity: 0.6 }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 lg:px-8 pt-20 pb-12">
+          {/* Section Title */}
+          <div className="text-left mb-8 md:mb-16 px-4">
+            <div className="text-2xl md:text-4xl font-black mb-4" style={{ 
+              fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, sans-serif',
+              color: '#F0F0FA'
+            }}>
+              우리는 비즈니스 성장 시스템을 설계합니다.
             </div>
           </div>
-        </section>
-
-        {/* Service Process Section */}
-        <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
-          {/* 배경 비디오 */}
-          <video 
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-          >
-            <source src="/service.mp4" type="video/mp4" />
-          </video>
-          
-          {/* 오버레이 */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-6 sm:mb-8" 
-                style={{ 
-                  color: '#f0f0fa'
-                }}
-              >
-                서비스 프로세스
-              </h2>
-              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto">
-                체계적이고 투명한 프로세스로 완벽한 솔루션을 제공합니다
-              </p>
-            </div>
-
-            {/* 프로세스 단계 */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-              <div className="text-center">
-                <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-[#f0f0fa]">1</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#f0f0fa] mb-2">상담 및 분석</h3>
-                <p className="text-[#f0f0fa]/70 text-sm">
-                  현재 운영 상황을 정확히 파악하고 
-                  최적의 솔루션을 설계합니다.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-[#f0f0fa]">2</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#f0f0fa] mb-2">맞춤 설계</h3>
-                <p className="text-[#f0f0fa]/70 text-sm">
-                  비즈니스 특성에 맞는 
-                  개별화된 시스템을 설계합니다.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-[#f0f0fa]">3</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#f0f0fa] mb-2">개발 및 구현</h3>
-                <p className="text-[#f0f0fa]/70 text-sm">
-                  최신 기술로 안정적이고 
-                  확장 가능한 시스템을 구축합니다.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-[#121212]/60 border border-[#f0f0fa]/20 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-[#f0f0fa]">4</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#f0f0fa] mb-2">운영 지원</h3>
-                <p className="text-[#f0f0fa]/70 text-sm">
-                  지속적인 모니터링과 
-                  업데이트로 완벽한 운영을 지원합니다.
-                </p>
-              </div>
-            </div>
+     
+          {/* Main Content */}
+          <div className="text-left space-y-3 md:space-y-8 leading-relaxed mb-6 md:mb-8 text-xs md:text-base px-4" style={{ 
+            fontFamily: 'Pretendard, -apple-system, BlinkMacSystemFont, sans-serif',
+            color: '#F0F0FA'
+          }}>
+            <p>
+              SnapPlug의 서비스는 단순한 제작이 아닙니다.
+              아이디어를 현실로, 시스템으로, 성장으로 연결하는 하나의 여정을 함께 만들어갑니다.
+            </p>
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section 
-          className="py-20 relative"
-          style={{
-            backgroundImage: 'url(/testimonials.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'top',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          {/* 오버레이 */}
-          <div className="absolute inset-0 bg-black/70"></div>
-          
-          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
-            <div className="text-center">
-              <h2 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-black mb-4 sm:mb-6 lg:mb-8" 
-                style={{ 
-                  color: '#f0f0fa'
-                }}
-              >
-                지금 시작하세요
-              </h2>
-              <p className="text-sm sm:text-base lg:text-[16px] text-[#f0f0fa]/70 max-w-3xl mx-auto mb-8 sm:mb-12">
-                회원•수업•예약•회원권 관리를 완벽하게 통합한 솔루션으로 
-                비즈니스를 한 단계 더 성장시켜보세요.
-              </p>
-              <ContactButton text="무료 상담 받기" />
+          {/* 6개 카드 레이아웃 */}
+          <div className="relative" ref={containerRef}>
+             {/* 첫 번째 행 - 3개 카드 */}
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-4 md:mb-8 px-4">
+               {/* Card 1 - 아이디어 */}
+               <div ref={(el) => { cardRefs.current[0] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">1. 아이디어 (Idea)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 막연함을 명확하게</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                    모든 비즈니스는 아이디어에서 시작됩니다. 
+                    우리는 대표님의 막연한 아이디어를 듣고, 그 안에 숨겨진 핵심 가치를 찾아냅니다.
+                    &quot;무엇을 만들고 싶은가&quot;보다 &quot;왜 그것이 필요한가&quot;를 함께 고민합니다.
+                 </p>
+               </div>
+
+               {/* Card 2 - 방향 설정 */}
+               <div ref={(el) => { cardRefs.current[1] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">2. 방향 설정 (Direction)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 목표를 명확한 전략으로</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                   아이디어를 구체적인 목표와 전략으로 전환합니다.
+                   누구를 위한 서비스인지, 어떤 문제를 해결할 것인지, 어떻게 성장할 것인지를 명확히 정의합니다.
+                   전략이 명확해지면 실행이 단순해집니다.
+                 </p>
+               </div>
+
+               {/* Card 3 - 설계 */}
+               <div ref={(el) => { cardRefs.current[2] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">3. 설계 (Design)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 비즈니스 구조를 체계적으로</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                   전략을 실행 가능한 시스템으로 설계합니다.
+                   사용자 경험, 비즈니스 로직, 데이터 흐름, 확장 가능성을 고려하여
+                   지속 가능한 비즈니스 구조를 만듭니다.
+                 </p>
+               </div>
+             </div>
+
+             {/* 두 번째 행 - 3개 카드 */}
+             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 px-4">
+               {/* Card 4 - 구현 */}
+               <div ref={(el) => { cardRefs.current[3] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">4. 구현 (Build)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 설계를 실제 시스템으로</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                   설계를 바탕으로 실제 시스템을 구축합니다.
+                   최신 기술과 검증된 개발 방법론을 활용하여 안정적이고 확장 가능한 솔루션을 만들어냅니다.
+                   코드 품질과 성능, 보안을 모두 고려한 완성도 높은 결과물을 제공합니다.
+                 </p>
+               </div>
+
+               {/* Card 5 - 자동화 */}
+               <div ref={(el) => { cardRefs.current[4] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">5. 자동화 (Automate)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 시스템이 스스로 일하게</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                   반복적인 업무를 자동화하여 시스템이 스스로 운영되도록 만듭니다.
+                   예약, 결제, 알림, 데이터 수집, 리포트 생성 등 사람의 개입 없이도
+                   비즈니스가 24시간 돌아가는 구조를 구축합니다.
+                 </p>
+               </div>
+
+               {/* Card 6 - 성장 */}
+               <div ref={(el) => { cardRefs.current[5] = el; }} className="bg-black/60 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-[#F0F0FA]/20 text-left hover:border-[#F0F0FA]/40 hover:scale-105 transition-all duration-300 cursor-pointer group opacity-0">
+                 {/* 아이콘 */}
+                 <div className="mb-3 md:mb-4">
+                   <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="#F0F0FA" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                   </svg>
+                 </div>
+                 {/* 제목 */}
+                 <h3 className="mb-3 md:mb-4" style={{ color: '#F0F0FA' }}>
+                   <span className="text-lg md:text-2xl font-bold block">6. 성장 (Growth)</span>
+                   <span className="text-sm md:text-lg font-medium block">- 데이터로 지속적인 성장을</span>
+                 </h3>
+                 <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#F0F0FA' }}>
+                   시스템 운영 데이터를 분석하여 개선점을 찾고, 지속적으로 최적화합니다.
+                   사용자 행동, 매출 패턴, 시스템 성능을 모니터링하며
+                   비즈니스가 성장할 수 있는 인사이트를 제공하고 함께 발전해나갑니다.
+                 </p>
+               </div>
+             </div>
+           </div>
+
+          {/* 하단 CTA */}
+          <div className="text-center mt-8 md:mt-12 px-4">
+            <div className="text-base md:text-2xl mb-6 md:mb-8" style={{ color: '#F0F0FA' }}>
+              단순하게 일하고, 진심으로 함께하며, 비즈니스의 그 너머까지 나아가겠습니다.
             </div>
+            <ContactButton 
+              text="함께하기"
+              onClick={() => router.push('/contacts')}
+            />
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       {/* Footer - 메인 페이지와 동일 */}
       <footer className="bg-[#000000] py-8" style={{ color: '#f0f0fa' }}>

@@ -246,7 +246,7 @@ export default function Home() {
         </section>
 
         {/* Portfolio Section */}
-        <section className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+        <section id="showcases" className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
           {/* 배경 비디오 */}
           <video 
             className="absolute inset-0 w-full h-full object-cover"

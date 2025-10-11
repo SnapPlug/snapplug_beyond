@@ -2,8 +2,9 @@
 
 interface ContactButtonProps {
   text?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 /**
@@ -18,10 +19,12 @@ interface ContactButtonProps {
 export default function ContactButton({ 
   text = "WATCH", 
   onClick,
-  className = ""
+  className = "",
+  type = "button"
 }: ContactButtonProps) {
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`
         inline-flex items-center justify-center

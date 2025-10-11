@@ -27,12 +27,28 @@ export default function SpaceXHeader() {
     { href: "/", label: "HOME" },
     { href: "/about", label: "ABOUT" },
     { href: "/service", label: "SERVICE" },
-    { href: "/showcases", label: "SHOWCASES" },
+    { href: "/#showcases", label: "SHOWCASES" },
     { href: "/contacts", label: "CONTACTS" }
   ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // 같은 페이지 내 앵커 링크인 경우 부드러운 스크롤 처리
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = href.substring(2); // '/#showcases' -> 'showcases'
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      
+      // 모바일 메뉴 닫기
+      setIsMobileMenuOpen(false);
+    }
   };
 
   return (
@@ -63,6 +79,7 @@ export default function SpaceXHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`text-sm font-medium transition-colors ${
                     isActive 
                       ? 'text-[#f0f0fa]' 
@@ -107,7 +124,7 @@ export default function SpaceXHeader() {
                         ? 'text-[#f0f0fa] bg-[#f0f0fa]/10' 
                         : 'text-[#f0f0fa]/70 hover:text-[#f0f0fa] hover:bg-[#f0f0fa]/5'
                     }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                   >
                     {item.label}
                   </Link>
