@@ -5,6 +5,7 @@ import SpaceXHeader from "@/components/SpaceXHeader";
 import ContactButton from "@/components/ContactButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Head from "next/head";
 
 export default function Service() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -58,6 +59,15 @@ export default function Service() {
 
   return (
     <div>
+      <Head>
+        <title>서비스 - SNAPPPLUG</title>
+        <meta name="description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
+        <meta name="keywords" content="SNAPPPLUG 서비스, 웹개발, 앱개발, 디지털마케팅, IT컨설팅, 디지털솔루션" />
+        <meta property="og:title" content="서비스 - SNAPPPLUG" />
+        <meta property="og:description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
+        <meta property="og:url" content="https://snapplug.app/service" />
+        <meta property="og:type" content="website" />
+      </Head>
       {/* SpaceX Header */}
       <SpaceXHeader />
 

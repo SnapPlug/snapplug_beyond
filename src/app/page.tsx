@@ -8,6 +8,7 @@ import PortfolioCarousel from "../components/PortfolioCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Head from "next/head";
 
 /**
  * 홈 페이지 컴포넌트
@@ -19,6 +20,18 @@ export default function Home() {
   const [showCompanyInfo, setShowCompanyInfo] = useState(false);
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
+      <Head>
+        <title>SNAPPPLUG - 혁신적인 디지털 솔루션</title>
+        <meta name="description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다. 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스로 고객의 비즈니스 성장을 지원합니다." />
+        <meta name="keywords" content="SNAPPPLUG, 웹개발, 앱개발, 디지털솔루션, 웹사이트제작, 모바일앱, 디지털마케팅, IT컨설팅" />
+        <meta property="og:title" content="SNAPPPLUG - 혁신적인 디지털 솔루션" />
+        <meta property="og:description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다." />
+        <meta property="og:url" content="https://snapplug.app" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SNAPPPLUG - 혁신적인 디지털 솔루션" />
+        <meta name="twitter:description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다." />
+      </Head>
       <SpaceXHeader />
       
       {/* Hero Section - FullScreenSection 사용 */}

@@ -4,6 +4,7 @@ import SpaceXHeader from "@/components/SpaceXHeader";
 import ContactButton from "@/components/ContactButton";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Head from "next/head";
 
 /**
  * About 페이지 컴포넌트 - Ethos Page
@@ -16,6 +17,15 @@ export default function About() {
   const [showCompanyInfo, setShowCompanyInfo] = useState(false);
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
+      <Head>
+        <title>회사소개 - SNAPPPLUG</title>
+        <meta name="description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다. 혁신적인 디지털 솔루션으로 고객의 비즈니스 성장을 지원하는 전문 기업입니다." />
+        <meta name="keywords" content="SNAPPPLUG 회사소개, 브랜드 철학, 창업 배경, 디지털 솔루션, IT 기업" />
+        <meta property="og:title" content="회사소개 - SNAPPPLUG" />
+        <meta property="og:description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다." />
+        <meta property="og:url" content="https://snapplug.app/about" />
+        <meta property="og:type" content="website" />
+      </Head>
       <SpaceXHeader />
       
       <main>
