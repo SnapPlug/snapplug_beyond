@@ -3,6 +3,7 @@
 import SpaceXHeader from "@/components/SpaceXHeader";
 import ContactButton from "@/components/ContactButton";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 /**
  * About 페이지 컴포넌트 - Ethos Page
@@ -12,6 +13,7 @@ import { useRouter } from "next/navigation";
  */
 export default function About() {
   const router = useRouter();
+  const [showCompanyInfo, setShowCompanyInfo] = useState(false);
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
       <SpaceXHeader />
@@ -217,9 +219,27 @@ export default function About() {
               © 2025 SnapPlug. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Contact</a>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c38009b496fca952cac1d4" target="_blank" rel="noopener noreferrer" className="hover:text-[#f0f0fa] transition-colors">Privacy Policy</a>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c380c6b295d0fa5e23633c" target="_blank" rel="noopener noreferrer" className="hover:text-[#f0f0fa] transition-colors">Terms of Service</a>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowCompanyInfo(!showCompanyInfo)}
+                  className="hover:text-[#f0f0fa] transition-colors"
+                >
+                  Company
+                </button>
+                {showCompanyInfo && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black/90 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-4 text-xs whitespace-nowrap z-50">
+                    <div className="text-left space-y-1">
+                      <div className="font-bold">(주) 스냅플러그 (SnapPlug)</div>
+                      <div className="text-xs opacity-80">사업자등록번호: 551-10-02859</div>
+                      <div className="text-xs opacity-80">대표자: 정해성</div>
+                      <div className="text-xs opacity-80">Email: hello@snapplug.app</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#f0f0fa]/20"></div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -229,9 +249,27 @@ export default function About() {
               © 2025 SnapPlug. All rights reserved.
             </div>
             <div className="flex justify-center space-x-6 text-sm">
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Privacy</a>
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Terms</a>
-              <a href="#" className="hover:text-[#f0f0fa] transition-colors">Contact</a>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c38009b496fca952cac1d4" target="_blank" rel="noopener noreferrer" className="hover:text-[#f0f0fa] transition-colors">Privacy</a>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c380c6b295d0fa5e23633c" target="_blank" rel="noopener noreferrer" className="hover:text-[#f0f0fa] transition-colors">Terms</a>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowCompanyInfo(!showCompanyInfo)}
+                  className="hover:text-[#f0f0fa] transition-colors"
+                >
+                  Company
+                </button>
+                {showCompanyInfo && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black/90 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-4 text-xs whitespace-nowrap z-50">
+                    <div className="text-left space-y-1">
+                      <div className="font-bold">(주) 스냅플러그 (SnapPlug)</div>
+                      <div className="text-xs opacity-80">사업자등록번호: 551-10-02859</div>
+                      <div className="text-xs opacity-80">대표자: 정해성</div>
+                      <div className="text-xs opacity-80">Email: hello@snapplug.app</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#f0f0fa]/20"></div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ export default function Contacts() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showCompanyInfo, setShowCompanyInfo] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -162,6 +163,7 @@ export default function Contacts() {
                 frameBorder="0"
                 title="SnapPlug 상담 예약"
                 className="w-full md:h-[600px]"
+                style={{ fontSize: '16px' }}
               />
             </div>
 
@@ -203,7 +205,7 @@ export default function Contacts() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 text-base"
                     placeholder="이름을 입력해주세요"
                   />
                 </div>
@@ -220,7 +222,7 @@ export default function Contacts() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 text-base"
                     placeholder="이메일을 입력해주세요"
                   />
                 </div>
@@ -241,7 +243,7 @@ export default function Contacts() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded-lg text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 resize-none text-sm md:text-base"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-black/50 border border-[#F0F0FA]/30 rounded-lg text-white placeholder-gray-400 focus:border-[#F0F0FA]/60 focus:outline-none focus:ring-1 focus:ring-[#F0F0FA]/30 transition-all duration-300 resize-none text-base"
                     placeholder="프로젝트에 대한 아이디어나 궁금한 점을 자유롭게 작성해주세요"
                   />
                 </div>
@@ -310,13 +312,30 @@ export default function Contacts() {
             
             {/* Center: Links */}
             <div className="flex-1 flex justify-center space-x-8">
-              <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
-                COMPANY
-              </a>
-              <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowCompanyInfo(!showCompanyInfo)}
+                  className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors"
+                  style={{ fontFamily: 'D-DIN, sans-serif' }}
+                >
+                  COMPANY
+                </button>
+                {showCompanyInfo && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black/90 backdrop-blur-sm border border-[#f0f0fa]/20 rounded-lg p-4 text-xs whitespace-nowrap z-50">
+                    <div className="text-left space-y-1">
+                      <div className="font-bold">(주) 스냅플러그 (SnapPlug)</div>
+                      <div className="text-xs opacity-80">사업자등록번호: 551-10-02859</div>
+                      <div className="text-xs opacity-80">대표자: 정해성</div>
+                      <div className="text-xs opacity-80">Email: hello@snapplug.app</div>
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#f0f0fa]/20"></div>
+                  </div>
+                )}
+              </div>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c380c6b295d0fa5e23633c" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
                 TERMS OF SERVICE
               </a>
-              <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c38009b496fca952cac1d4" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
                 PRIVACY POLICY
               </a>
               <a href="/contacts" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
@@ -339,10 +358,10 @@ export default function Contacts() {
               <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
                 SNAPPLUG
               </a>
-              <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c380c6b295d0fa5e23633c" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
                 TERMS
               </a>
-              <a href="#" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
+              <a href="https://elegant-sand-f36.notion.site/24f2b9ca10c38009b496fca952cac1d4" target="_blank" rel="noopener noreferrer" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
                 PRIVACY
               </a>
               <a href="/contacts" className="text-sm uppercase tracking-wider hover:text-gray-300 transition-colors" style={{ fontFamily: 'D-DIN, sans-serif' }}>
