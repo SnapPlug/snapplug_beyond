@@ -73,7 +73,7 @@ export default function Home() {
             <div className="text-center">
               <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-[#f0f0fa] mb-2 flex items-center justify-center">
                 <span className="text-lg sm:text-2xl lg:text-3xl">
-                  <AnimatedCounter end={99} duration={2200} />
+                  <AnimatedCounter end={100} duration={2200} />
                 </span>
                 <span className="text-sm sm:text-lg lg:text-xl ml-1">%</span>
               </div>
