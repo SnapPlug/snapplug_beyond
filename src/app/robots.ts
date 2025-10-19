@@ -8,5 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/api/',
     },
     sitemap: 'https://snapplug.app/sitemap.xml',
+    host: 'https://snapplug.app',
   }
 }
