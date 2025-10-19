@@ -18,11 +18,11 @@ export default function About() {
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
       <Head>
-        <title>회사소개 - SNAPPPLUG</title>
-        <meta name="description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다. 혁신적인 디지털 솔루션으로 고객의 비즈니스 성장을 지원하는 전문 기업입니다." />
-        <meta name="keywords" content="SNAPPPLUG 회사소개, 브랜드 철학, 창업 배경, 디지털 솔루션, IT 기업" />
-        <meta property="og:title" content="회사소개 - SNAPPPLUG" />
-        <meta property="og:description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다." />
+        <title>회사소개 - SNAPPPLUG | 아이디어를 현실로 만드는 전문가들</title>
+        <meta name="description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다. 고객의 시간과 돈을 벌어다주는 서비스를 만드는 전문가들이 아이디어를 현실로 만들고 꿈을 이뤄드리는 과정을 담았습니다." />
+        <meta name="keywords" content="SNAPPPLUG, 스냅플러그, snapplug, 회사소개, 브랜드 철학, 창업 배경, 아이디어 현실화, 꿈 실현, 시간 절약, 수익 창출, 디지털 솔루션, IT 기업" />
+        <meta property="og:title" content="회사소개 - SNAPPPLUG | 아이디어를 현실로 만드는 전문가들" />
+        <meta property="og:description" content="SNAPPPLUG의 브랜드 철학과 창업 배경을 소개합니다. 고객의 시간과 돈을 벌어다주는 서비스를 만드는 전문가들이 아이디어를 현실로 만들고 꿈을 이뤄드리는 과정을 담았습니다." />
         <meta property="og:url" content="https://snapplug.app/about" />
         <meta property="og:type" content="website" />
       </Head>

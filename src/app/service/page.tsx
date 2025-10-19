@@ -60,11 +60,11 @@ export default function Service() {
   return (
     <div>
       <Head>
-        <title>서비스 - SNAPPPLUG</title>
-        <meta name="description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
-        <meta name="keywords" content="SNAPPPLUG 서비스, 웹개발, 앱개발, 디지털마케팅, IT컨설팅, 디지털솔루션" />
-        <meta property="og:title" content="서비스 - SNAPPPLUG" />
-        <meta property="og:description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
+        <title>서비스 - SNAPPPLUG | 시간과 돈을 벌어다주는 디지털 솔루션</title>
+        <meta name="description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 고객의 시간과 돈을 벌어다주는 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
+        <meta name="keywords" content="SNAPPPLUG, 스냅플러그, snapplug, 서비스, 시간 절약, 수익 창출, 웹개발, 앱개발, 디지털마케팅, IT컨설팅, 디지털솔루션, 아이디어 현실화, 꿈 실현" />
+        <meta property="og:title" content="서비스 - SNAPPPLUG | 시간과 돈을 벌어다주는 디지털 솔루션" />
+        <meta property="og:description" content="SNAPPPLUG의 다양한 서비스를 확인하세요. 고객의 시간과 돈을 벌어다주는 웹 개발, 앱 개발, 디지털 마케팅, IT 컨설팅 등 전문적인 디지털 솔루션을 제공합니다." />
         <meta property="og:url" content="https://snapplug.app/service" />
         <meta property="og:type" content="website" />
       </Head>

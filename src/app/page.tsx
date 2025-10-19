@@ -21,16 +21,16 @@ export default function Home() {
   return (
     <div className="font-sans bg-[#121212] text-[#f0f0fa]">
       <Head>
-        <title>SNAPPPLUG - 혁신적인 디지털 솔루션</title>
-        <meta name="description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다. 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스로 고객의 비즈니스 성장을 지원합니다." />
-        <meta name="keywords" content="SNAPPPLUG, 웹개발, 앱개발, 디지털솔루션, 웹사이트제작, 모바일앱, 디지털마케팅, IT컨설팅" />
-        <meta property="og:title" content="SNAPPPLUG - 혁신적인 디지털 솔루션" />
-        <meta property="og:description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다." />
+        <title>SNAPPPLUG - 아이디어를 현실로, 꿈을 이뤄드리는 디지털 솔루션</title>
+        <meta name="description" content="SNAPPPLUG는 고객의 시간과 돈을 벌어다주는 서비스를 만드는 전문 기업입니다. 아이디어를 현실로 만들고, 꿈을 이뤄드리는 혁신적인 웹/앱 개발, 디지털 마케팅 솔루션을 제공합니다." />
+        <meta name="keywords" content="SNAPPPLUG, 스냅플러그, snapplug, 아이디어 현실화, 꿈 실현, 시간 절약, 수익 창출, 웹개발, 앱개발, 디지털솔루션, 비즈니스 성장, 디지털마케팅, IT컨설팅, 창업 지원" />
+        <meta property="og:title" content="SNAPPPLUG - 아이디어를 현실로, 꿈을 이뤄드리는 디지털 솔루션" />
+        <meta property="og:description" content="SNAPPPLUG는 고객의 시간과 돈을 벌어다주는 서비스를 만드는 전문 기업입니다. 아이디어를 현실로 만들고, 꿈을 이뤄드리는 혁신적인 솔루션을 제공합니다." />
         <meta property="og:url" content="https://snapplug.app" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SNAPPPLUG - 혁신적인 디지털 솔루션" />
-        <meta name="twitter:description" content="SNAPPPLUG는 창의적이고 혁신적인 디지털 솔루션을 제공하는 전문 기업입니다." />
+        <meta name="twitter:title" content="SNAPPPLUG - 아이디어를 현실로, 꿈을 이뤄드리는 디지털 솔루션" />
+        <meta name="twitter:description" content="SNAPPPLUG는 고객의 시간과 돈을 벌어다주는 서비스를 만드는 전문 기업입니다." />
       </Head>
       <SpaceXHeader />
       

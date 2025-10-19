@@ -80,11 +80,11 @@ export default function Contacts() {
   return (
     <div>
       <Head>
-        <title>문의하기 - SNAPPPLUG</title>
-        <meta name="description" content="SNAPPPLUG에 문의하세요. 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스에 대한 상담을 받으실 수 있습니다." />
-        <meta name="keywords" content="SNAPPPLUG 문의, 웹개발 상담, 앱개발 문의, 디지털솔루션 상담, IT컨설팅" />
-        <meta property="og:title" content="문의하기 - SNAPPPLUG" />
-        <meta property="og:description" content="SNAPPPLUG에 문의하세요. 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스에 대한 상담을 받으실 수 있습니다." />
+        <title>문의하기 - SNAPPPLUG | 아이디어를 현실로 만들어드립니다</title>
+        <meta name="description" content="SNAPPPLUG에 문의하세요. 고객의 시간과 돈을 벌어다주는 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스에 대한 상담을 받으실 수 있습니다. 아이디어를 현실로 만들어드립니다." />
+        <meta name="keywords" content="SNAPPPLUG, 스냅플러그, snapplug, 문의, 아이디어 현실화, 꿈 실현, 시간 절약, 수익 창출, 웹개발 상담, 앱개발 문의, 디지털솔루션 상담, IT컨설팅" />
+        <meta property="og:title" content="문의하기 - SNAPPPLUG | 아이디어를 현실로 만들어드립니다" />
+        <meta property="og:description" content="SNAPPPLUG에 문의하세요. 고객의 시간과 돈을 벌어다주는 웹 개발, 앱 개발, 디지털 마케팅 등 다양한 서비스에 대한 상담을 받으실 수 있습니다." />
         <meta property="og:url" content="https://snapplug.app/contacts" />
         <meta property="og:type" content="website" />
       </Head>
