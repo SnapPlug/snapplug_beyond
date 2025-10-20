@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import SpaceXHeader from "@/components/SpaceXHeader";
 import ContactButton from "@/components/ContactButton";
-import Link from "next/link";
+// import Link from "next/link"; // 사용하지 않음
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 

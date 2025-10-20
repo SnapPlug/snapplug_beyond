@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next'
+// RSS 피드 생성 함수
 
 export async function GET() {
   const baseUrl = 'https://snapplug.app'
